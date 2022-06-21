@@ -38,7 +38,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
 }
 
 .photographer_section article h2 {
@@ -49,4 +49,12 @@ h1 {
 .photographer_section article img {
   height: 200px;
   width: 200px;
+}
+.photographer_section article div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.photographer_section article div p {
+  margin: 5px;
 }
