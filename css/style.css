@@ -38,11 +38,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .photographer_section article h2 {
   color: #d3573c;
+  margin-bottom: 0;
+
   font-size: 36px;
 }
 

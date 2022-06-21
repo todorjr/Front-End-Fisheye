@@ -16,7 +16,7 @@ function photographerFactory(data) {
     textContent.textContent = tagline;
     h2.textContent = name;
     const div = document.createElement("div");
-    article.appendChild(div);
+
     p.textContent = city + "," + " " + country;
     p.style.color = "#d3573c";
     p.style.fontSize = "12px";
@@ -24,6 +24,7 @@ function photographerFactory(data) {
     priceElement.style.color = "grey";
     article.appendChild(img);
     article.appendChild(h2);
+    article.appendChild(div);
     div.appendChild(p);
     div.appendChild(textContent);
     div.appendChild(priceElement);
