@@ -8,6 +8,7 @@ function photographerFactory(data) {
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.classList.add("profilPics");
+    img.onclick = function () { location.href = "photographer.html"; };
     const h2 = document.createElement("h2");
     const euroSign = "\u20AC";
     const p = document.createElement("p");
