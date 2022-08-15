@@ -9,26 +9,32 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header role="banner">
       <img src="assets/images/logo.png" class="logo" />
     </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <main id="main" role="main">
+      <div class="photograph-header" role="button">
+        <button aria-label="Ouverture de la modal pour contacter le photographer" class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="header">
 			<div class="modal">
-				<header>
+				<header role="contact">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close" title="Close" />
         </header>
 				<form>
-					<div>
+					<div role="form">
 						<label>Prénom</label>
 						<input />
+            <label>Nom</label>
+						<input />
+            <label>Adresse</label>
+						<input />
+            <label>Email</label>
+						<input />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" role="button" aria-label="Envoyer message a photographer">Envoyer</button>
 				</form>
 			</div>
 		</div>
