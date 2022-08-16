@@ -1,9 +1,9 @@
 export function photographerFactory(data) {
   const { name, portrait, city, country, tagline, price ,id} = data;
 
-  const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
+    const picture = `assets/photographers/${portrait}`;
     const article = document.createElement("article");
     article.setAttribute("tabindex", "0");
     article.classList.add("photographer-article");
@@ -36,7 +36,7 @@ export function photographerFactory(data) {
     div.appendChild(priceElement);
     return article;
   }
-  return { picture, data, getUserCardDOM };
+  return { data, getUserCardDOM };
 }
 
 
