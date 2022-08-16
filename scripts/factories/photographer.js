@@ -1,16 +1,20 @@
-function photographerFactory(data) {
-  const { name, portrait, city, country, tagline, price } = data;
+export function photographerFactory(data) {
+  const { name, portrait, city, country, tagline, price ,id} = data;
 
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
+    article.setAttribute("tabindex", "0");
+    article.classList.add("photographer-article");
     const img = document.createElement("img");
     img.setAttribute("alt", name);
     img.setAttribute("title","Profil picture");
     img.setAttribute("src", picture);
     img.classList.add("profilPics");
-    img.onclick = function () { location.href = "photographer.html"; };
+    img.onclick = function () { location.href = `photographer.html?id=${id}`; };
+    article.addEventListener("keypress", ()=>{
+      window.location.href=`photographer.html?id=${id}`});  
     const h2 = document.createElement("h2");
     const euroSign = "\u20AC";
     const p = document.createElement("p");
@@ -19,7 +23,6 @@ function photographerFactory(data) {
     textContent.textContent = tagline;
     h2.textContent = name;
     const div = document.createElement("div");
-
     p.textContent = city + "," + " " + country;
     p.style.color = "#d3573c";
     p.style.fontSize = "12px";
