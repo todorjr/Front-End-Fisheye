@@ -122,3 +122,11 @@ h4 {
     line-height: 23px;
     color: #525252;
 }
+.gallery-images{
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+    object-fit: cover;
+    border: 1px solid black ;
+    margin:10px;
+}
