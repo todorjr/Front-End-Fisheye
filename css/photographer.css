@@ -6,7 +6,16 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
 }
+
+.flex-item:nth-of-type(1) { order: 2;}
+.flex-item:nth-of-type(2) { order: 1; }
+.flex-item:nth-of-type(3) { order: 3; }
 
 .contact_button {
     font-size: 20px;
@@ -74,18 +83,42 @@ form input {
     border: none;
     border-radius: 5px;
 }
-.photograph-header{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-    padding: 10px;
-}
+
 .logo{
     height: 50px;
     margin-left: 100px;
 }
 .profilPics{
-    width: 100px;
-    height: 100px;
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+}
+.photographInfo{
+    order: 3;
+}
+
+h2 {
+    margin: 10px 0 10px 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 83px;
+    color: #D3573C;
+}
+
+h3 {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 24px;
+    line-height: 31px;
+    color: #901C1C;
+}
+
+h4 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #525252;
 }
