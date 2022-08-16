@@ -1,21 +1,26 @@
 import {getPhotographerById} from "../api/media.js"
 import {photographerMediaFactory} from "../factories/photographerMediaFactory.js"
 
+const url = new URL(window.location.href);
+const photographerId = url.searchParams.get("id");
 
-async function displayData(medias) {
+async function displayData(photographers) {
     const photographersSection = document.querySelector(".photograph-header");
-    medias.forEach((media) => {
-      const photographerModel = photographerMediaFactory(media);
+    photographers.forEach((photographer) => {
+      if (photographer.id == photographerId){
+      const photographerModel = photographerMediaFactory(photographer);
       const userCardDOM = photographerModel.getUserMedia();
+      const userPhotoDOM = photographerModel.getUserPhoto();
       photographersSection.appendChild(userCardDOM);
+      photographersSection.appendChild(userPhotoDOM);
+      }
     });
   }
   
   async function init() {
     // Récupère les datas des photographes
-    const { medias } = await getPhotographerById();
-    displayData(medias);
+    const { photographers } = await getPhotographerById();
+    displayData(photographers);
   }
   
   init();
-
