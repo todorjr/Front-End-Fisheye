@@ -14,7 +14,7 @@ async function displayData(photographer, medias) {
       const photographerModel = photographerFactory(photographer);
       const photographerGalleryImage = photographerGalleryFactory(
         medias,
-        `assets/photographers/photographers_photos/${photographer.name}`
+        `assets/photographers_photos/${photographer.name}`
       );
 
       const userGallery = photographerGalleryImage.getUserGallery();
