@@ -1,3 +1,7 @@
+body {
+    font-family:"DM Sans", sans-serif
+}
+
 #contact_modal {
     display: none;
 }
@@ -122,6 +126,7 @@ h3 {
     line-height: 23px;
     color: #525252;
 }
+
  .gallery-images{
     display: flex;
     flex-wrap: wrap;
@@ -130,11 +135,38 @@ h3 {
     justify-content: space-evenly;
     
 }
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.text-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+.imageTitle{
+flex-grow: 1;
+margin-left: 20px;
+}
+.imageLike{
+
+    margin-right: 5px;
+}
  .galleryPics{
-  border: 1px solid ;
-  border-radius: 20px;
+  border-radius: 5px;
   width: 350px;
-  height: 350px;
-  margin: 10px;
+  height: 300px;
   object-fit: cover;
+  margin: 20px;
+ }
+.galleryPics:hover{
+    box-shadow: -7px 20px 34px 6px rgba(0,0,0,0.65);
+    -webkit-box-shadow: -7px 20px 34px 6px rgba(0,0,0,0.65);
+    -moz-box-shadow: -7px 20px 34px 6px rgba(0,0,0,0.65);
+    cursor: pointer;
+}
+.imageTitle,.imageLike,.heart{
+    color:#901C1C;
 }
