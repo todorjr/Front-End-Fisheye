@@ -26,18 +26,18 @@
 			<div class="modal">
 				<header role="contact">
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close" title="Close" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close" title="Close" class="closeButton"/>
         </header>
 				<form>
 					<div role="form">
 						<label>Prénom</label>
-						<input />
+						<input id="prenom"/>
             <label>Nom</label>
-						<input />
-            <label>Adresse</label>
-						<input />
+						<input id="nom"/> />
             <label>Email</label>
-						<input />
+						<input id="email"/>
+            <label for="textarea">Votre message</label>
+            <textarea name="Votre message" id="textarea" rows=10 style="width:100%;"></textarea>
 					</div>
           <button class="contact_button" role="button" aria-label="Envoyer message a photographer">Envoyer</button>
 				</form>
