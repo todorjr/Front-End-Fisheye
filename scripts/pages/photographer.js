@@ -1,20 +1,21 @@
-import {getPhotographerById} from "../api/media.js"
-import {photographerMediaFactory} from "../factories/photographerMediaFactory.js"
+import {getPhotographerById,getMediaByPhotographers} from "../api/index.js";
+import {photographerFactory} from "../factories/photographerFactory.js"
 import {photographerGalleryFactory} from "../factories/photographerGalleryFactory.js"
 
 const url = new URL(window.location.href);
 const photographerId = url.searchParams.get("id");
 
-async function displayData(photographer) {
+async function displayData(photographer, medias) {
 
     const photographersSection = document.querySelector(".photograph-header");
     const photographerGallery = document.querySelector(".photographer-gallery");
 
-    // photographers.forEach((photographer) => {
 
-      // if (photographer.id == photographerId){
-      const photographerModel = photographerMediaFactory(photographer);
-      const photographerGalleryImage = photographerGalleryFactory(photographer);
+      const photographerModel = photographerFactory(photographer);
+      const photographerGalleryImage = photographerGalleryFactory(
+        medias,
+        `assets/photographers/photographers_photos/${photographer.name}`
+      );
 
       const userGallery = photographerGalleryImage.getUserGallery();
       const userCardDOM = photographerModel.getUserMedia();
@@ -28,8 +29,14 @@ async function displayData(photographer) {
   
   async function init() {
     // Récupère les datas des photographes
-    const photographers  = await getPhotographerById(photographerId);
-    displayData(photographers);
+    
+    const photographers = await getPhotographerById(parseInt(photographerId));
+    const medias = await getMediaByPhotographers(parseInt(photographerId));
+
+    console.log(photographers,"photographer");
+    console.log(medias,"media");
+
+    displayData(photographers, medias);
   }
   
   init();

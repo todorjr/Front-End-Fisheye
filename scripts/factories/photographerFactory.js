@@ -1,5 +1,5 @@
 
-export function photographerMediaFactory(data){                                 
+export function photographerFactory(data){                                 
         
   function getUserPhoto(){
     const {portrait,name}  = data;
