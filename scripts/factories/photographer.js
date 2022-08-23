@@ -39,6 +39,7 @@ export function photographerFactory(data) {
   return { data, getUserCardDOM };
 }
 
+//! reconstruction function for HTML elements
 
 //* home page accessibility with keyboard navigation
 

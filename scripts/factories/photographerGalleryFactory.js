@@ -20,3 +20,5 @@ const {title,image,price,date,likes,name} = data;
     }
 return ({getUserGallery});
 }
+
+//! make the gallery today
