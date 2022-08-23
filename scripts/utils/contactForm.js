@@ -18,10 +18,11 @@ const form = document.querySelector('#form');
 form.addEventListener('submit', function (e) {
     // prevent the form from submitting
     e.preventDefault();
-    console.log("Votre validation :",nom.value,
-    prenom.value,
-    email.value,
-    textarea.value);
+    console.log(
+    "Votre nom :\n",nom.value,
+    "\nVotre prenom :\n",prenom.value,
+    "\nVotre email :\n",email.value,
+    "\nVotre message :\n",textarea.value);
     closeModal();
 
 });
