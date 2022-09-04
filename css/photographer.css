@@ -157,19 +157,18 @@ h3 {
     margin-right: 20px;
 }
 .imageTitle{
-flex-grow: 1;
-margin-left: 20px;
+   flex-grow: 1;
+   margin-left: 20px;
 }
 .imageLike{
     margin-right: 5px;
 }
- .galleryPics{
+ .galleryPics, .galleryVideo{
   border-radius: 5px;
   width: 350px;
   height: 350px;
   object-fit: cover;
   margin: 20px ;
-  filter: drop-shadow(10px -10px 4px rgb(157, 157, 157));
   cursor: pointer;
 
  }
