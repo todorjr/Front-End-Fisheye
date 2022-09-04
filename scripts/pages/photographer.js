@@ -10,11 +10,10 @@ async function displayData(photographer, medias) {
     const photographersSection = document.querySelector(".photograph-header");
     const photographerGallery = document.querySelector(".photographer-gallery");
 
-
+      const path = `assets/photographers_photos/${photographer.name}`
       const photographerModel = photographerFactory(photographer);
       const photographerGalleryImage = photographerGalleryFactory(
-        medias,
-        `assets/photographers_photos/${photographer.name}`
+        medias,path
       );
 
       const userGallery = photographerGalleryImage.getUserGallery();
