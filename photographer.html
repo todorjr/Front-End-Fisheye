@@ -31,13 +31,13 @@
 				<form id="form" >
 					<div role="form">
 						<label>Prénom</label>
-						<input type="text" id="prenom"/>
+						<input type="text" id="prenom" autocomplete="name" aria-required="true" required/>
             <label>Nom</label>
-						<input type="text" id="nom"/> 
+						<input type="text" id="nom" autocomplete="name" aria-required="true" required/> 
             <label>Email</label>
-						<input type="text" id="email"/>
+						<input type="text" id="email" autocomplete="email" aria-required="true" required/>
             <label for="textarea">Votre message</label>
-            <textarea name="Votre message" id="textarea" rows=10 style="width:100%;"></textarea>
+            <textarea name="Votre message" id="textarea"  autocomplete="message" aria-required="true" required rows=10 style="width:100%;"></textarea>
 					</div>
           <button class="contact_button" role="button" aria-label="Envoyer message a photographer" >Envoyer</button>
 				</form>

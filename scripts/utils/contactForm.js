@@ -1,3 +1,4 @@
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -8,6 +9,8 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+
+//form data from user
 const nom = document.getElementById('nom');
 const email = document.getElementById('email');
 const prenom = document.getElementById('prenom');

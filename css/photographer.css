@@ -54,6 +54,8 @@ body {
 }
 
 .modal header {
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
 }
@@ -61,12 +63,11 @@ body {
 .modal header img {
     cursor: pointer;
 }
-
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
-    color:#901C1C;
+    text-align: left;
+    color:#000;
 }
 
 form {
@@ -77,7 +78,7 @@ form {
 }
 
 form label {
-    color: #312E2E;
+    color: #000;
     font-size: 36px;
     margin:10px 10px 0 0 ;
 }
@@ -160,7 +161,6 @@ flex-grow: 1;
 margin-left: 20px;
 }
 .imageLike{
-
     margin-right: 5px;
 }
  .galleryPics{
