@@ -14,6 +14,7 @@ export function photographerGalleryFactory(medias, path) {
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("image-container")
 
+
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
 
