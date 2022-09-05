@@ -13,6 +13,31 @@ header {
   height: 90px;
 }
 
+h2 {
+  margin: 10px 0 10px 0;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 83px;
+  color: #D3573C;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 31px;
+  color: #901C1C;
+}
+
+h4 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #525252;
+}
+
 .profilPics {
   border-radius: 50%;
   height: 250px;
