@@ -33,10 +33,12 @@ export function photographerGalleryFactory(medias, path) {
 
             const titleText = document.createElement( "h4" )
             titleText.classList.add("videoTitle")
+            titleText.setAttribute("tabindex", 0)
             titleText.innerText = title
 
             const like = document.createElement( "p" )
             const heart = document.createElement( "span" )
+            heart.setAttribute("tabindex", 0)
             heart.classList.add("heart")
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
             like.classList.add("imageLike")
@@ -79,9 +81,10 @@ export function photographerGalleryFactory(medias, path) {
 
             const like = document.createElement( "p" )
             const heart = document.createElement( "span" )
+            heart.setAttribute("tabindex", 0)
             heart.classList.add("heart")
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-            like.classList.add("imageLike")
+            like.classList.add("imageLike");
             like.textContent=likes
 
             imageDiv.appendChild(img)
