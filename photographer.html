@@ -31,7 +31,7 @@
         </header>
 				<form id="form" >
 					<div role="form">
-						<label tabindex="0">Prénom</label>
+						<label for="prenom" tabindex="0">Prénom</label>
 						<input tabindex="0" type="text" id="prenom" autocomplete="name" aria-required="true" required/>
             <label tabindex="0">Nom</label>
 						<input tabindex="0" type="text" id="nom" autocomplete="name" aria-required="true" required/> 
@@ -40,12 +40,12 @@
             <label tabindex="0" for="textarea">Votre message</label>
             <textarea tabindex="0" name="Votre message" id="textarea"  autocomplete="message" aria-required="true" required rows=10 style="width:100%;"></textarea>
 					</div>
-          <button class="contact_button" role="button" aria-label="Envoyer message a photographer" >Envoyer</button>
+          <button id="contactButton" class="contact_button" role="button" aria-label="Envoyer message a photographer" >Envoyer</button>
 				</form>
 			</div>
 		</div>
+
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js" type="module"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
