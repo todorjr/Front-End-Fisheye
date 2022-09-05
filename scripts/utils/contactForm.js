@@ -1,7 +1,40 @@
 
 function displayModal() {
     const modal = document.getElementById("contact_modal");
+
 	modal.style.display = "block";
+
+    const firstFocusableElement = modal.querySelector("#prenom"); // get first element to be focused inside modal
+    const lastFocusableElement = modal.querySelector("#contactButton"); // get last element to be focused inside modal
+
+    console.log('firstFocusableElement', firstFocusableElement)
+
+    document.addEventListener('keydown', function(e) {
+        let isTabPressed = e.key === 'Tab';
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        console.log('tab', document.activeElement)
+
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+            console.log('trouver le dernier élément')
+            if (document.activeElement === firstFocusableElement) {
+                e.preventDefault();
+                lastFocusableElement.focus(); // add focus for the last focusable element
+            }
+        } else { // if tab key is pressed
+            console.log('trouver le premier élément')
+
+            if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+                e.preventDefault();
+                firstFocusableElement.focus(); // add focus for the first focusable element
+        }
+        }
+    });
+
+    firstFocusableElement.focus();
 }
 
 function closeModal() {
