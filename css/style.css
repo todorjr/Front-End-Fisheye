@@ -12,6 +12,9 @@ header {
   align-items: center;
   height: 90px;
 }
+label{
+  padding-bottom: 5px;
+}
 
 h2 {
   margin: 10px 0 10px 0;
@@ -21,10 +24,10 @@ h2 {
   line-height: 83px;
   color: #D3573C;
 }
-h2:focus{
+h2:focus,label:focus,input:focus{
   outline: 3px dashed;
+  padding: 5px;
 }
-
 h3 {
   font-style: normal;
   font-weight: 200;
