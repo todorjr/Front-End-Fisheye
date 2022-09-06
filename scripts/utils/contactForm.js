@@ -40,6 +40,8 @@ function displayModal() {
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+  
+
 }
 
 
@@ -62,3 +64,19 @@ form.addEventListener('submit', function (e) {
     closeModal();
 
 });
+
+// accessibility closing modal when key enter is pressed
+document.onkeydown = function(e) {
+    let evt = e || window.event; // for more compatibility
+    let keyCode = evt.keyCode;
+  
+    console.log(keyCode + " was pressed");
+  
+    switch(keyCode) {
+        case 13: // left key was pressed
+            closeModal();
+            e.preventDefault(); // prevents the default behaviour to trigger
+            break;
+      
+    }
+  }
