@@ -21,6 +21,9 @@ h2 {
   line-height: 83px;
   color: #D3573C;
 }
+h2:focus{
+  outline: 3px dashed;
+}
 
 h3 {
   font-style: normal;
@@ -98,6 +101,11 @@ h1:focus{
 }
 
 .photographer_section article:focus{
+  outline: 3px dashed;
+  padding: 5px;
+}
+
+.container :focus{
   outline: 3px dashed;
   padding: 5px;
 }

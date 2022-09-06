@@ -4,8 +4,8 @@ function displayModal() {
 
 	modal.style.display = "block";
 
-    const firstFocusableElement = modal.querySelector("#prenom"); // get first element to be focused inside modal
-    const lastFocusableElement = modal.querySelector("#contactButton"); // get last element to be focused inside modal
+    const firstFocusableElement = modal.querySelector(".modal-title"); // get first element to be focused inside modal
+    const lastFocusableElement = modal.querySelector(".closeButton"); // get last element to be focused inside modal
 
     console.log('firstFocusableElement', firstFocusableElement)
 
