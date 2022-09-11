@@ -123,7 +123,7 @@ form input {
     align-items: center;
     margin-right: 20px;
 }
-.imageTitle{
+.mediaTitle{
    flex-grow: 1;
    margin-left: 20px;
 }
@@ -140,7 +140,7 @@ form input {
 
  }
 
-.imageTitle,.imageLike,.heart{
+.mediaTitle,.imageLike,.heart{
     color:#901C1C;
 }
 

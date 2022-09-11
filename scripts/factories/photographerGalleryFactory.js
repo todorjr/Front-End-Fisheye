@@ -192,7 +192,7 @@ export function photographerGalleryFactory(medias, path) {
     
     
             const titleText = document.createElement( "h4" )
-            titleText.classList.add("videoTitle")
+            titleText.classList.add("mediaTitle")
             titleText.setAttribute("tabindex", 0)
             titleText.innerText = title
     
@@ -236,7 +236,7 @@ export function photographerGalleryFactory(medias, path) {
     
     
             const titleText = document.createElement( "h4" )
-            titleText.classList.add("imageTitle")
+            titleText.classList.add("mediaTitle")
             titleText.innerText = title
     
             const like = document.createElement( "p" )
