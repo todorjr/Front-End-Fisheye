@@ -11,24 +11,18 @@ async function displayData(photographer, medias) {
     const photographerGallery = document.querySelector(".photographer-gallery");
 
       const path = `assets/photographers_photos/${photographer.name}`
-      // const photographerModel = photographerFactory(photographer);
-      // const photographerGalleryImage = photographerGalleryFactory(
-      //   medias,path
-      // );
-      const galleryDiv = document.createElement("div");
-      medias.forEach(m=>{
-      const media = getGalleryElementFromMediaFactory({...m, photgrapherName:photographer.name})
-      console.log(media.toElement());
-      photographerGallery.appendChild(media.toElement())
-      })
+      const photographerModel = photographerFactory(photographer);
+      const photographerGalleryImage = photographerGalleryFactory(
+        medias,path
+      );
 
-      // const userGallery = photographerGalleryImage.getUserGallery();
-      // const userCardDOM = photographerModel.getUserMedia();
-      // const userPhotoDOM = photographerModel.getUserPhoto();
+      const userGallery = photographerGalleryImage.getUserGallery();
+      const userCardDOM = photographerModel.getUserMedia();
+      const userPhotoDOM = photographerModel.getUserPhoto();
 
-      // photographerGallery.appendChild(userGallery);
-      // photographersSection.appendChild(userCardDOM);
-      // photographersSection.appendChild(userPhotoDOM);
+      photographerGallery.appendChild(userGallery);
+      photographersSection.appendChild(userCardDOM);
+      photographersSection.appendChild(userPhotoDOM);
       };
   
   
