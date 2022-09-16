@@ -211,18 +211,11 @@ export function photographerGalleryFactory(medias,path) {
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
 
             heart.addEventListener("click",()=> {
-                like.textContent--
+                like.textContent++
                 })
             like.classList.add("imageLike")
             like.textContent=likes
 
-             
-            like.addEventListener("click",()=> {
-                like.textContent++
-                })
-                like.addEventListener("click",()=> {
-                    like.textContent=likes
-                    }) 
     
             videoDiv.appendChild(mp4)
             textDiv.appendChild(titleText)
@@ -267,7 +260,7 @@ export function photographerGalleryFactory(medias,path) {
             like.textContent=likes
             
 
-            like.addEventListener("click",()=> {
+            heart.addEventListener("click",()=> {
             like.textContent++
             })
 
