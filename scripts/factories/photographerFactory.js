@@ -1,5 +1,5 @@
 
-export function photographerFactory(data){                                 
+export function photographerFactory(data,media){                                 
         
   function getUserPhoto(){
     const {portrait,name}  = data;
@@ -39,7 +39,31 @@ export function photographerFactory(data){
 
     return info;
   }
+  
+  function getUserLikes() {
+    const {price} = data;
 
+    const quantities =document.createElement('div');
+    const likeText = document.createElement('h4');
+    const priceText = document.createElement('h4');
 
-return{getUserMedia,getUserPhoto}
+    const heart = document.createElement( "span" )
+    heart.setAttribute("tabindex", 0)
+    heart.classList.add("heart")
+    heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
+    quantities.classList.add('quantities');
+    likeText.textContent = 711  ;
+    likeText.classList.add('likeText')
+    priceText.textContent = price + "€ /jour";
+
+    quantities.append(likeText);
+    likeText.appendChild(heart);
+    quantities.append(priceText);
+
+    return quantities;
+
+  }
+
+return{getUserMedia,getUserPhoto,getUserLikes}
 }

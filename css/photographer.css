@@ -157,3 +157,24 @@ font-size: 20px;
 padding-left: 5px;
 }
 
+.quantities{
+    width: 200px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    float: right;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid;
+}
+
+.likeText{
+    display: flex;
+    flex-direction: row;
+}
+
+.likeText i{
+    margin-left: 5px;
+}

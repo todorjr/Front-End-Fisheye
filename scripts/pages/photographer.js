@@ -19,10 +19,12 @@ async function displayData(photographer, medias) {
       const userGallery = photographerGalleryImage.getUserGallery();
       const userCardDOM = photographerModel.getUserMedia();
       const userPhotoDOM = photographerModel.getUserPhoto();
+      const userLikeDOM =photographerModel.getUserLikes();
 
       photographerGallery.appendChild(userGallery);
       photographersSection.appendChild(userCardDOM);
       photographersSection.appendChild(userPhotoDOM);
+      photographerGallery.appendChild(userLikeDOM);
       };
   
   
