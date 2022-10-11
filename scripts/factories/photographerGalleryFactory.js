@@ -262,7 +262,7 @@ export function photographerGalleryFactory(medias,path) {
 
             heart.addEventListener("click",()=> {
             like.textContent++
-            })
+            },{once:true})
 
     
             imageDiv.appendChild(img)
