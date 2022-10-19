@@ -1,5 +1,5 @@
 import {getPhotographerById,getMediaByPhotographers} from "../api/index.js";
-import {photographerFactory} from "../factories/photographerFactory.js"
+import {FactoryMedia} from "../factories/FactoryMedia.js";
 import {photographerGalleryFactory} from "../factories/photographerGalleryFactory.js"
 
 const url = new URL(window.location.href);
@@ -11,7 +11,7 @@ async function displayData(photographer, medias) {
     const photographerGallery = document.querySelector(".photographer-gallery");
 
       const path = `assets/photographers_photos/${photographer.name}`
-      const photographerModel = photographerFactory(photographer);
+      const photographerModel = photographerGalleryFactory(photographer);
       const photographerGalleryImage = photographerGalleryFactory(
         medias,path
       );
