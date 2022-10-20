@@ -39,9 +39,9 @@ export class ImageGalleryElement extends BaseGalleryElement {
             like.textContent=this.likes
     
             imageDiv.appendChild(img)
-            textDiv.appendChild(titleText)
-            textDiv.appendChild(like)
-            textDiv.appendChild(heart)
+            imageDiv.appendChild(titleText)
+            imageDiv.appendChild(like)
+            imageDiv.appendChild(heart)
          
             
         return imageDiv

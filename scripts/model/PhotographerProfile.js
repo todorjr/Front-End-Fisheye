@@ -11,7 +11,8 @@ import  Photographer  from "../model/Photographer.js";
     }
     
     toElement () {
-
+        const imgLink= document.createElement('a');
+        imgLink.setAttribute('href',`photographer.html?id=${this.id}`);
         const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
         article.setAttribute("tabindex", "0");
@@ -21,7 +22,7 @@ import  Photographer  from "../model/Photographer.js";
         img.setAttribute("title","Profil picture");
         img.setAttribute("src", picture);
         img.classList.add("profilPics");
-        img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
+        imgLink.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
         article.addEventListener("keypress", ()=>{
           window.location.href=`photographer.html?id=${this.id}`});  
         const h2 = document.createElement("h2");
@@ -38,6 +39,7 @@ import  Photographer  from "../model/Photographer.js";
         priceElement.textContent = this.price + euroSign + "/jour";
         priceElement.style.color = "grey";
         article.appendChild(img);
+        div.appendChild(imgLink)
         article.appendChild(h2);
         article.appendChild(div);
         div.appendChild(p);
