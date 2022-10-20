@@ -1,11 +1,12 @@
 import {getPhotographerById,getMediaByPhotographers} from "../api/index.js";
 import FactoryMedia from "../factories/FactoryMedia.js";
+import HeaderFactory from "../factories/HeaderFactory.js";
 
 const url = new URL(window.location.href);
 const photographerId = url.searchParams.get("id");
 
 async function displayData(photographer, medias) {
-
+    const photographerHeader = document.querySelector(".photograph-header")
     const photographerGallery = document.querySelector(".photographer-gallery");
 
       const path = `assets/photographers_photos/${photographer.name}`
@@ -15,6 +16,11 @@ async function displayData(photographer, medias) {
         const element = item.toElement()
         photographerGallery.appendChild(element)
     })
+      photographer.forEach((photographer) => {
+      const header = new HeaderFactory(photographer);
+      const userCardDOM = header.toElement();
+      photographerHeader.appendChild(userCardDOM);
+    });
       };
   
       
