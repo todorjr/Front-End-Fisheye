@@ -12,24 +12,6 @@ export class BaseGalleryElement {
         this.photgrapherId = media.photgrapherId;
         this.path = media.path;
     }
-    // get title() { 
-    //     return this.title;
-    // }
-    // get date() { 
-    //     return this.date;
-    // }
-    // get likes() { 
-    //     return this.likes;
-    // }
-    // get price() { 
-    //     return this.price;
-    // }
-    // get id() { 
-    //     return this.id;
-    // }
-    // get photgrapherId() {
-    //     return this.photgrapherId;
-    // }
     toElement () {
         throw new Error('UNKNOWN TYPE')
     }

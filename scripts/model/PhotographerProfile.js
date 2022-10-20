@@ -12,16 +12,16 @@ import  Photographer  from "../model/Photographer.js";
     
     toElement () {
 
-        const picture = `assets/photographers/${portrait}`;
+        const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
         article.setAttribute("tabindex", "0");
         article.classList.add("photographer-article");
         const img = document.createElement("img");
-        img.setAttribute("alt", _name);
+        img.setAttribute("alt", this.name);
         img.setAttribute("title","Profil picture");
         img.setAttribute("src", picture);
         img.classList.add("profilPics");
-        img.onclick = function () { location.href = `photographer.html?id=${id}`; };
+        img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
         article.addEventListener("keypress", ()=>{
           window.location.href=`photographer.html?id=${id}`});  
         const h2 = document.createElement("h2");
@@ -29,13 +29,13 @@ import  Photographer  from "../model/Photographer.js";
         const p = document.createElement("p");
         const textContent = document.createElement("p");
         const priceElement = document.createElement("p");
-        textContent.textContent = tagline;
-        h2.textContent = _name;
+        textContent.textContent = this.tagline;
+        h2.textContent = this.name;
         const div = document.createElement("div");
-        p.textContent = city + "," + " " + country;
+        p.textContent = this.city + "," + " " + this.country;
         p.style.color = "#d3573c";
         p.style.fontSize = "12px";
-        priceElement.textContent = price + euroSign + "/jour";
+        priceElement.textContent = this.price + euroSign + "/jour";
         priceElement.style.color = "grey";
         article.appendChild(img);
         article.appendChild(h2);

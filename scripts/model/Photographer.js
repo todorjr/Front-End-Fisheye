@@ -12,27 +12,6 @@
         this.id = data.id;
         this.photgrapherId = data.photgrapherId;
     }
-    get name() { 
-        return this._name;
-    }
-    get city() { 
-        return this.city;
-    }
-    get tagline() { 
-        return this.tagline;
-    }
-    get price() { 
-        return this.price;
-    }
-    get id() { 
-        return this.id;
-    }
-    get photgrapherId() {
-        return this.photgrapherId;
-    }
-    get country() {
-        return this.country
-    }
     toElement () {
         throw new Error('UNKNOWN TYPE')
     }
