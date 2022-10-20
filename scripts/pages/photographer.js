@@ -17,7 +17,7 @@ async function displayData(photographer, medias) {
       // );
 
       medias.forEach((media) => {
-        let item = new FactoryMedia(media)
+        let item = new FactoryMedia({...media,path:path})
         const element = item.toElement()
 
         photographerGallery.appendChild(element)

@@ -18,12 +18,12 @@ export class ImageGalleryElement extends BaseGalleryElement {
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
-            // const picture = `${path}/${image}`
+            const picture = `${this.path}/${this.image}`
     
             const img = document.createElement( "img" )
             img.classList.add("galleryPics")
             img.setAttribute("alt", this.title)
-            // img.setAttribute("src",picture)
+            img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
     
     

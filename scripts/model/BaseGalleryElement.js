@@ -10,6 +10,7 @@ export class BaseGalleryElement {
         this.price = media.price;
         this.id = media.id;
         this.photgrapherId = media.photgrapherId;
+        this.path = media.path;
     }
     // get title() { 
     //     return this.title;

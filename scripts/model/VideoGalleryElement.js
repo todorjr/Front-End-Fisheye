@@ -19,13 +19,13 @@ export class VideoGalleryElement extends BaseGalleryElement {
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
-            // const videoData = `${path}/${video}`
+            const videoData = `${this.path}/${this.video}`
     
             const mp4 = document.createElement( "video" )
             mp4.classList.add("galleryPics")
             mp4.setAttribute("controls","controls")
             mp4.setAttribute("alt", this.title)
-            // mp4.setAttribute("src",videoData)
+            mp4.setAttribute("src",videoData)
             mp4.setAttribute("tabindex", 0)
             mp4.setAttribute("type","video/mp4")
     
