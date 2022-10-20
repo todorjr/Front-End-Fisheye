@@ -8,7 +8,7 @@ async function displayData(photographer, medias) {
 
     const photographerGallery = document.querySelector(".photographer-gallery");
 
-      const path = `assets/photographers_photos/${photographer.name}`
+      const path = `assets/photographers_photos/${photographer}`
     
       medias.forEach((media) => {
         let item = new FactoryMedia({...media,path:path})

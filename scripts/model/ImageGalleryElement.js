@@ -9,7 +9,6 @@ export class ImageGalleryElement extends BaseGalleryElement {
     }
     
     toElement () {
-            // const container = document.createElement('div');
     
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("image-container")
@@ -43,9 +42,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)
             textDiv.appendChild(heart)
-            // container.append(imageDiv)
-            // container.append(textDiv)
-            // galleryDiv.appendChild(container)
+         
             
         return imageDiv
     }

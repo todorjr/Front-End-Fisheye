@@ -10,7 +10,6 @@
         this.country = data.country;
         this.price = data.price;
         this.id = data.id;
-        this.photgrapherId = data.photgrapherId;
     }
     toElement () {
         throw new Error('UNKNOWN TYPE')

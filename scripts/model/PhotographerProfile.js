@@ -21,9 +21,9 @@ import  Photographer  from "../model/Photographer.js";
         img.setAttribute("title","Profil picture");
         img.setAttribute("src", picture);
         img.classList.add("profilPics");
-        img.onclick = function () { location.href = `photographer.html?id=${id}`; };
+        img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
         article.addEventListener("keypress", ()=>{
-          window.location.href=`photographer.html?id=${id}`});  
+          window.location.href=`photographer.html?id=${this.id}`});  
         const h2 = document.createElement("h2");
         const euroSign = "\u20AC";
         const p = document.createElement("p");
