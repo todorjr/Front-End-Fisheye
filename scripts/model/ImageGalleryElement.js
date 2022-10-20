@@ -9,7 +9,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
     }
     
     toElement () {
-    
+            const div = document.createElement('div')
+            div.classList.add('image-gallery-div')
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("image-container")
     
@@ -38,12 +39,15 @@ export class ImageGalleryElement extends BaseGalleryElement {
             like.classList.add("imageLike");
             like.textContent=this.likes
     
+            textDiv.appendChild(titleText)
+            textDiv.appendChild(like)
+            textDiv.appendChild(heart)
+
             imageDiv.appendChild(img)
-            imageDiv.appendChild(titleText)
-            imageDiv.appendChild(like)
-            imageDiv.appendChild(heart)
+            div.appendChild(textDiv)
+            div.appendChild(imageDiv)
          
             
-        return imageDiv
+        return div
     }
 }
