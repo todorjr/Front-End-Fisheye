@@ -4,7 +4,7 @@
  export default class Photographer {
     
     constructor(data) {
-        this.name = data.name;
+        this._name = data.name;
         this.city = data.city;
         this.tagline = data.tagline;
         this.country = data.country;
@@ -13,7 +13,7 @@
         this.photgrapherId = data.photgrapherId;
     }
     get name() { 
-        return this.name;
+        return this._name;
     }
     get city() { 
         return this.city;
