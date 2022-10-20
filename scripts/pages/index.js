@@ -1,5 +1,4 @@
 import {getPhotographers} from "../api/index.js"
-// import {photographerFactory} from "../factories/photographer.js"
 import ArtistFactory from "../factories/ArtistFactory.js"
 
 async function displayData(photographer) {
