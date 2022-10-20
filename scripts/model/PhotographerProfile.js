@@ -21,7 +21,7 @@ import  Photographer  from "../model/Photographer.js";
         img.setAttribute("title","Profil picture");
         img.setAttribute("src", picture);
         img.classList.add("profilPics");
-        img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
+        img.onclick = function () { location.href = `photographer.html?id=${id}`; };
         article.addEventListener("keypress", ()=>{
           window.location.href=`photographer.html?id=${id}`});  
         const h2 = document.createElement("h2");
