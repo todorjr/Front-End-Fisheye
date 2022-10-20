@@ -4,7 +4,7 @@
  export default class Photographer {
     
     constructor(data) {
-        this._name = data.name;
+        this.name = data.name;
         this.city = data.city;
         this.tagline = data.tagline;
         this.country = data.country;
