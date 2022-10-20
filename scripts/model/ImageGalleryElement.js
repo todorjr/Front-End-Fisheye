@@ -1,7 +1,7 @@
 /**
  * Generate a image element.
  */
-import { BaseGalleryElement } from "./BaseGalleryElement"
+import { BaseGalleryElement } from "./BaseGalleryElement.js"
 export class ImageGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
@@ -9,7 +9,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
     }
     
     toElement () {
-
+            // const container = document.createElement('div');
     
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("image-container")
@@ -18,18 +18,18 @@ export class ImageGalleryElement extends BaseGalleryElement {
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
-            const picture = `${path}/${image}`
+            // const picture = `${path}/${image}`
     
             const img = document.createElement( "img" )
             img.classList.add("galleryPics")
-            img.setAttribute("alt", title)
-            img.setAttribute("src",picture)
+            img.setAttribute("alt", this.title)
+            // img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
     
     
             const titleText = document.createElement( "h4" )
             titleText.classList.add("imageTitle")
-            titleText.innerText = title
+            titleText.innerText = this.title
     
             const like = document.createElement( "p" )
             const heart = document.createElement( "span" )
@@ -37,15 +37,15 @@ export class ImageGalleryElement extends BaseGalleryElement {
             heart.classList.add("heart")
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
             like.classList.add("imageLike");
-            like.textContent=likes
+            like.textContent=this.likes
     
             imageDiv.appendChild(img)
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)
             textDiv.appendChild(heart)
-            container.append(imageDiv)
-            container.append(textDiv)
-            galleryDiv.appendChild(container)
+            // container.append(imageDiv)
+            // container.append(textDiv)
+            // galleryDiv.appendChild(container)
             
         return imageDiv
     }

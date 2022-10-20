@@ -11,24 +11,24 @@ export class BaseGalleryElement {
         this.id = media.id;
         this.photgrapherId = media.photgrapherId;
     }
-    get title() { 
-        return this.title;
-    }
-    get date() { 
-        return this.date;
-    }
-    get likes() { 
-        return this.likes;
-    }
-    get price() { 
-        return this.price;
-    }
-    get id() { 
-        return this.id;
-    }
-    get photgrapherId() {
-        return this.photgrapherId;
-    }
+    // get title() { 
+    //     return this.title;
+    // }
+    // get date() { 
+    //     return this.date;
+    // }
+    // get likes() { 
+    //     return this.likes;
+    // }
+    // get price() { 
+    //     return this.price;
+    // }
+    // get id() { 
+    //     return this.id;
+    // }
+    // get photgrapherId() {
+    //     return this.photgrapherId;
+    // }
     toElement () {
         throw new Error('UNKNOWN TYPE')
     }

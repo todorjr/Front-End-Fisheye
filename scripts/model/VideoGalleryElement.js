@@ -1,7 +1,7 @@
 /**
  * Generate a video element.
  */
-import { BaseGalleryElement } from "./BaseGalleryElement"
+import { BaseGalleryElement } from "./BaseGalleryElement.js"
 export class VideoGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
@@ -19,13 +19,13 @@ export class VideoGalleryElement extends BaseGalleryElement {
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
-            const videoData = `${path}/${video}`
+            // const videoData = `${path}/${video}`
     
             const mp4 = document.createElement( "video" )
             mp4.classList.add("galleryPics")
             mp4.setAttribute("controls","controls")
-            mp4.setAttribute("alt", title)
-            mp4.setAttribute("src",videoData)
+            mp4.setAttribute("alt", this.title)
+            // mp4.setAttribute("src",videoData)
             mp4.setAttribute("tabindex", 0)
             mp4.setAttribute("type","video/mp4")
     
@@ -33,7 +33,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
             const titleText = document.createElement( "h4" )
             titleText.classList.add("videoTitle")
             titleText.setAttribute("tabindex", 0)
-            titleText.innerText = title
+            titleText.innerText = this.title
     
             const like = document.createElement( "p" )
             const heart = document.createElement( "span" )
@@ -41,7 +41,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
             heart.classList.add("heart")
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
             like.classList.add("imageLike")
-            like.textContent=likes
+            like.textContent=this.likes
     
             videoDiv.appendChild(mp4)
             textDiv.appendChild(titleText)
@@ -50,7 +50,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
     
             videoDiv.append(videoSection)
             videoDiv.append(textDiv)
-            galleryDiv.appendChild(videoDiv)
+            // galleryDiv.appendChild(videoDiv)
     
             
         

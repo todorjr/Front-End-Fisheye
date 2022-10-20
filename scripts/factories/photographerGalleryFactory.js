@@ -1,4 +1,4 @@
-import FactoryMedia from "./FactoryMedia"
+import FactoryMedia from "./FactoryMedia.js"
 
 export function photographerGalleryFactory(medias) {
         function getUserGalleryUsingClasses () {

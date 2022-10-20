@@ -42,9 +42,8 @@
 //! reconstruction function for HTML elements
 
 //* home page accessibility with keyboard navigation
-
-import {ImageGalleryElement} from "../model/ImageGalleryElement"
-import {VideoGalleryElement} from "../model/VideoGalleryElement"
+import {ImageGalleryElement} from "../model/ImageGalleryElement.js"
+import {VideoGalleryElement} from "../model/VideoGalleryElement.js"
 
 export default class FactoryMedia{
    constructor(media){
