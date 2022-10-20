@@ -29,4 +29,7 @@ export class BaseGalleryElement {
     get photgrapherId() {
         return this.photgrapherId;
     }
+    toElement () {
+        throw new Error('UNKNOWN TYPE')
+    }
 }

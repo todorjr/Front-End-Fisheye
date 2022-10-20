@@ -33,5 +33,7 @@
     get country() {
         return this.country
     }
-    
+    toElement () {
+        throw new Error('UNKNOWN TYPE')
+    }
 }

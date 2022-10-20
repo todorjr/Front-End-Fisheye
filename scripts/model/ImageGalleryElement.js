@@ -1,8 +1,8 @@
 /**
  * Generate a image element.
  */
-
-class ImageGalleryElement extends BaseGalleryElement {
+import { BaseGalleryElement } from "./BaseGalleryElement"
+export class ImageGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
         this.image= media.image

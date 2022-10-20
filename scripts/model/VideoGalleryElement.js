@@ -1,7 +1,8 @@
 /**
  * Generate a video element.
  */
-class VideoGalleryElement extends BaseGalleryElement {
+import { BaseGalleryElement } from "./BaseGalleryElement"
+export class VideoGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
         this.video= media.video
