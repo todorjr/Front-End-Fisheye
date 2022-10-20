@@ -56,43 +56,45 @@ export default class ArtistFactory{
  }
 }
 
-function handleLeft() {
-  window.scrollBy(-1 * window.innerWidth, 0);
-}
-function handleRight() {
-  window.scrollBy(window.innerWidth, 0);
-}
-function handleUp() {
-  window.scrollBy(0, -1 * window.innerHeight);
-}
-function handleDown() {
-  window.scrollBy(0, window.innerHeight);
-}
+// function handleLeft() {
+//   window.scrollBy(-1 * window.innerWidth, 0);
+// }
+// function handleRight() {
+//   window.scrollBy(window.innerWidth, 0);
+// }
+// function handleUp() {
+//   window.scrollBy(0, -1 * window.innerHeight);
+// }
+// function handleDown() {
+//   window.scrollBy(0, window.innerHeight);
+// }
 
-document.onkeydown = function(e) {
-  let evt = e || window.event; // for more compatibility
-  let keyCode = evt.keyCode;
+// document.onkeydown = function(e) {
+//   let evt = e || window.event; // for more compatibility
+//   let keyCode = evt.keyCode;
 
-  console.log(keyCode + " was pressed");
+//   console.log(keyCode + " was pressed");
 
-  switch(keyCode) {
-      case 37: // left key was pressed
-          handleLeft();
-          e.preventDefault(); // prevents the default behaviour to trigger
-          break;
-      case 38: // up key was pressed
-          handleUp();
-          e.preventDefault();
-          break;
-      case 39: // right key was pressed
-          handleRight();
-          e.preventDefault();
-          break;
-      case 40: // down key was pressed
-          handleDown();
-          e.preventDefault();
-          break;
-      default:
-          break;
-  }
-}
+//   switch(keyCode) {
+//       case 37: // left key was pressed
+//           handleLeft();
+//           e.preventDefault(); // prevents the default behaviour to trigger
+//           break;
+//       case 38: // up key was pressed
+//           handleUp();
+//           e.preventDefault();
+//           break;
+//       case 39: // right key was pressed
+//           handleRight();
+//           e.preventDefault();
+//           break;
+//       case 40: // down key was pressed
+//           handleDown();
+//           e.preventDefault();
+//           break;
+//       default:
+//           break;
+//   }
+// }
+
+//Folder service
