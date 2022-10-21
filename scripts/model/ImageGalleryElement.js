@@ -44,8 +44,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
             textDiv.appendChild(heart)
 
             imageDiv.appendChild(img)
-            div.appendChild(textDiv)
             div.appendChild(imageDiv)
+            div.appendChild(textDiv)
          
             
         return div

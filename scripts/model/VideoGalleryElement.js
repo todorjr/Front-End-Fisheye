@@ -13,9 +13,6 @@ export class VideoGalleryElement extends BaseGalleryElement {
             const videoDiv = document.createElement("div")
             videoDiv.classList.add("container")
     
-            const videoSection = document.createElement( "div")
-            videoSection.classList.add("video-container")
-    
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
@@ -43,17 +40,13 @@ export class VideoGalleryElement extends BaseGalleryElement {
             like.classList.add("imageLike")
             like.textContent=this.likes
     
-            videoDiv.appendChild(mp4)
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)
             textDiv.appendChild(heart)
-    
-            videoDiv.append(videoSection)
-            videoDiv.append(textDiv)
-            // galleryDiv.appendChild(videoDiv)
-    
             
-        
+            videoDiv.appendChild(mp4)
+            videoDiv.append(textDiv)
+    
         return videoDiv
     }
 }

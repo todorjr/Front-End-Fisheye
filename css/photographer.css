@@ -109,10 +109,11 @@ form input {
 .photographInfo{
     order: 3;
 }
-.image-gallery-div{
+.image-gallery-div,.container{
     display: flex;
-    flex-flow: column-reverse wrap;
+    flex-flow: column wrap;
     gap: 10px;
+    
 }
 .imageTitle,.videoTitle{
     flex-grow: 3;
@@ -129,11 +130,11 @@ form input {
 .image-container{
     display: flex;
     flex-flow: column ;
+    
 }
-.container{
-    display: flex;
-    flex-direction: column;
-}
+.galleryPics{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;}
+
 .text-container{
     display: flex;
     flex-direction: row;
