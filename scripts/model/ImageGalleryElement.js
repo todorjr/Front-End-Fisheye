@@ -25,6 +25,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
             img.setAttribute("alt", this.title)
             img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
+            img.onclick = function () { location.href = `photographer.html?id=${id}`; };
+    
     
     
             const titleText = document.createElement( "h4" )
@@ -38,6 +40,17 @@ export class ImageGalleryElement extends BaseGalleryElement {
             heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
             like.classList.add("imageLike");
             like.textContent=this.likes
+            heart.addEventListener("click",()=> {
+                heart.dataset.clicked = true;
+                if ( !heart.clicked ) {
+                    like.textContent = this.likes++
+                } if ( heart.clicked=true ) {
+                    like.textContent = this.likes--
+                }
+       
+            },)
+            
+         
     
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)

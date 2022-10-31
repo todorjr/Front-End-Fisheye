@@ -16,11 +16,11 @@ async function displayData(photographer, medias) {
         const element = item.toElement()
         photographerGallery.appendChild(element)
     })
-      photographer.forEach((photographer) => {
-      const header = new HeaderFactory(photographer);
-      const userCardDOM = header.toElement();
-      photographerHeader.appendChild(userCardDOM);
-    });
+    //   photographer.forEach((photographer) => {
+    //   const header = new HeaderFactory(photographer);
+    //   const userCardDOM = header.toElement();
+    //   photographerHeader.appendChild(userCardDOM);
+    // });
       };
   
       
