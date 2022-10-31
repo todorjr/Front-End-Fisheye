@@ -16,12 +16,11 @@ async function displayData(photographer, medias) {
         const element = item.toElement()
         photographerGallery.appendChild(element)
     })
-    //   photographer.forEach((photographer) => {
-    //   const header = new HeaderFactory(photographer);
-    //   const userCardDOM = header.toElement();
-    //   photographerHeader.appendChild(userCardDOM);
-    // });
-      };
+      const header = new HeaderFactory(photographer);
+      const userCardDOM = header.toElement();
+      photographerHeader.appendChild(userCardDOM);
+    };
+  
   
       
   
@@ -35,6 +34,7 @@ async function displayData(photographer, medias) {
     console.log(medias,"media");
 
     displayData(photographers, medias);
+
   }
   
   init();
