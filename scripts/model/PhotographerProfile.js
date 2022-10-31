@@ -22,7 +22,8 @@ import  Photographer  from "../model/Photographer.js";
         img.setAttribute("title","Profil picture");
         img.setAttribute("src", picture);
         img.classList.add("profilPics");
-        imgLink.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
+        // imgLink.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
+    
         article.addEventListener("keypress", ()=>{
           window.location.href=`photographer.html?id=${this.id}`});  
         const h2 = document.createElement("h2");
@@ -38,7 +39,8 @@ import  Photographer  from "../model/Photographer.js";
         p.style.fontSize = "12px";
         priceElement.textContent = this.price + euroSign + "/jour";
         priceElement.style.color = "grey";
-        article.appendChild(img);
+        imgLink.appendChild(img)
+        article.appendChild(imgLink);
         div.appendChild(imgLink)
         article.appendChild(h2);
         article.appendChild(div);
