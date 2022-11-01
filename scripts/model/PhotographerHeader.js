@@ -1,5 +1,4 @@
 import  Photographer  from "../model/Photographer.js";
-
 export default class PhotographerHeader extends Photographer {
     constructor(data){
         super(data)
@@ -7,7 +6,7 @@ export default class PhotographerHeader extends Photographer {
     }
     
     toElement () {
-     
+
         const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
         article.setAttribute("tabindex", "0");
@@ -24,13 +23,14 @@ export default class PhotographerHeader extends Photographer {
         textContent.textContent = this.tagline;
         h2.textContent = this.name;
         const div = document.createElement("div");
+        div.classList.add("header-info");
         p.textContent = this.city + "," + " " + this.country;
         p.style.color = "#d3573c";
         p.style.fontSize = "12px";
     
         article.appendChild(img);
-        article.appendChild(h2);
         article.appendChild(div);
+        div.appendChild(h2)
         div.appendChild(p);
         div.appendChild(textContent);
         return article;
