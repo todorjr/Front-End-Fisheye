@@ -41,11 +41,20 @@ export class ImageGalleryElement extends BaseGalleryElement {
             like.classList.add("imageLike");
             like.textContent=this.likes
             heart.addEventListener("click",()=> {
-                heart.dataset.clicked = true;
-                if ( !heart.clicked ) {
-                    like.textContent = this.likes++
-                } if ( heart.clicked=true ) {
-                    like.textContent = this.likes--
+                console.log('clicked')
+                console.log('nb likes', this.likes)
+                if (heart.dataset.liked !== 'true') {
+                    // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
+                    // la valeur est égale à true
+                    heart.dataset.liked = 'true';
+                    like.textContent = ++this.likes
+                    console.log('add like', this.likes)
+                } else  {
+                    // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
+                    // on supprime la valeur dans le dataset
+                    heart.dataset.liked = undefined;
+                    like.textContent = --this.likes
+                    console.log('remove like', this.likes)
                 }
        
             },)
