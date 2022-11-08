@@ -31,6 +31,8 @@
 .photographer-header__article {
     display: flex;
     flex-flow: row wrap;
+    justify-content:space-between;
+    flex: 1 0 100%;
 }
 .header-info {
     order: -1;
@@ -44,7 +46,23 @@
 .flex-item:nth-of-type(2) { order: 1; }
 .flex-item:nth-of-type(3) { order: 3; }
 
-.open-modal,.contact_button {
+.open-modal{
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        padding: 11px;
+        width: 170px;
+        height: 70px;
+        border: none;
+        background-color: #901C1C;
+        border-radius: 5px;
+        cursor: pointer;
+        position:absolute;
+        left: 50%;
+        top: 35%;
+    
+}
+.contact_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
