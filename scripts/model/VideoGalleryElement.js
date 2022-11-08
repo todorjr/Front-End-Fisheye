@@ -6,7 +6,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
         this.video= media.video
-    };
+    }
    
     toElement () {
         
@@ -46,10 +46,11 @@ export class VideoGalleryElement extends BaseGalleryElement {
                     // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
                     // la valeur est égale à true
                     heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-
                     heart.dataset.liked = 'true';
                     like.textContent = ++this.likes
                     heart.classList.toggle('red');
+                    alert(`You had liked ${this.title} 🥳!`)
+
                 } else  {
                     // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
                     // on supprime la valeur dans le dataset
@@ -57,6 +58,8 @@ export class VideoGalleryElement extends BaseGalleryElement {
                     like.textContent = --this.likes
                     heart.classList.remove('red');
                     heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+                    alert(`You unliked ${this.title} 😫!`)
+
 
                                 }
        
