@@ -26,7 +26,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             img.setAttribute("alt", this.title)
             img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
-            img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
+           
     
     
     
