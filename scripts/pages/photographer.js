@@ -17,8 +17,11 @@ async function displayData(photographer, medias) {
         photographerGallery.appendChild(element)
     })
       const header = new HeaderFactory(photographer);
+      const contact = contactModal
       const userCardDOM = header.toElement();
       photographerHeader.appendChild(userCardDOM);
+
+
     };
   
   
