@@ -38,7 +38,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             heart.setAttribute("tabindex", 0)
             heart.classList.add("heart")
             heart.setAttribute("id","heart");
-            heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+            heart.innerHTML = `<i class="fa fa-heart-o"></i>`
             like.classList.add("imageLike");
             like.textContent=this.likes
             heart.addEventListener("click",()=> {
@@ -49,7 +49,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     heart.dataset.liked = 'true';
                     like.textContent = ++this.likes
                     heart.classList.toggle('red');
-
+                    heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
 
                 } else  {
                     // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
@@ -57,6 +57,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     heart.dataset.liked = undefined;
                     like.textContent = --this.likes
                     heart.classList.remove('red');
+                    heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+
 
                 }
        

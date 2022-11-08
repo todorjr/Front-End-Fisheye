@@ -36,7 +36,8 @@ export class VideoGalleryElement extends BaseGalleryElement {
             const heart = document.createElement( "span" )
             heart.setAttribute("tabindex", 0)
             heart.classList.add("heart")
-            heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+            heart.innerHTML = `<i class="fa fa-heart-o"></i>
+            `
             like.classList.add("imageLike")
             like.textContent=this.likes
             heart.addEventListener("click",()=> {
@@ -44,6 +45,8 @@ export class VideoGalleryElement extends BaseGalleryElement {
                 if (heart.dataset.liked !== 'true') {
                     // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
                     // la valeur est égale à true
+                    heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
                     heart.dataset.liked = 'true';
                     like.textContent = ++this.likes
                     heart.classList.toggle('red');
@@ -53,6 +56,8 @@ export class VideoGalleryElement extends BaseGalleryElement {
                     heart.dataset.liked = undefined;
                     like.textContent = --this.likes
                     heart.classList.remove('red');
+                    heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+
                                 }
        
             },)
