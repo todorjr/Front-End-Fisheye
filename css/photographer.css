@@ -167,7 +167,7 @@ form input {
 
  }
 
-.mediaTitle,.imageLike,.heart{
+.mediaTitle,.imageLike{
     color:#901C1C;
 }
 
@@ -205,3 +205,10 @@ padding-left: 5px;
 .likeText i{
     margin-left: 5px;
 }
+
+.heart{
+    color: #000;
+}
+.heart.red {
+    color: red;
+  }
