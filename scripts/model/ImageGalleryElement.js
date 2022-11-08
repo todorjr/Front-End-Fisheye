@@ -51,6 +51,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     like.textContent = ++this.likes
                     heart.classList.toggle('red');
                     heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+                    alert(`You had liked ${this.title} 🥳!`)
 
                 } else  {
                     // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
@@ -59,6 +60,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     like.textContent = --this.likes
                     heart.classList.remove('red');
                     heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+                    alert(`You unliked ${this.title} 😫!`)
+
 
 
                 }
