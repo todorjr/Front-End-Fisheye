@@ -35,32 +35,37 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-// function will send message when key enter is pressed
-function sendMessage() {
-    const sendBtn = document.querySelector('.close_button');
-    sendBtn.addEventListener()
-
-}
 
 //form data from user
+
+export function formListener () {
+    const openButton = document.querySelector('.open-modal');
+    openButton.addEventListener('click',()=>displayModal());
+    const contactButton = document.querySelector('.closeButton');
+    contactButton.addEventListener('click',()=>closeModal());
+
+    //add close button select x button and add event listener also for send message do the same 
+
 const nom = document.getElementById('nom');
 const email = document.getElementById('email');
 const prenom = document.getElementById('prenom');
 const textarea = document.getElementById('textarea');
-
 const form = document.querySelector('#form');
  
-form.addEventListener('submit', function (e) {
-    // prevent the form from submitting
-    e.preventDefault();
-    console.log(
-    "Votre nom :\n",nom.value,
-    "\nVotre prenom :\n",prenom.value,
-    "\nVotre email :\n",email.value,
-    "\nVotre message :\n",textarea.value);
-    closeModal();
+    form.addEventListener('submit', function (e) {
+        // prevent the form from submitting
+        e.preventDefault();
+        console.log(
+        "Votre nom :\n",nom.value,
+        "\nVotre prenom :\n",prenom.value,
+        "\nVotre email :\n",email.value,
+        "\nVotre message :\n",textarea.value);
+        closeModal();
+    
+    });
+}
 
-});
+
 
 
 // accessibility closing modal when key enter is pressed
@@ -78,3 +83,4 @@ document.onkeydown = function(e) {
       
     }
   }
+

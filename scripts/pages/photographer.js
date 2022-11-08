@@ -1,9 +1,13 @@
 import {getPhotographerById,getMediaByPhotographers} from "../api/index.js";
 import FactoryMedia from "../factories/FactoryMedia.js";
 import HeaderFactory from "../factories/HeaderFactory.js";
+import contactModal from "../utils/contactModal.js";
+import { formListener } from "../utils/contactForm.js";
 
 const url = new URL(window.location.href);
 const photographerId = url.searchParams.get("id");
+const modal = document.querySelector('#contact_modal');
+
 
 async function displayData(photographer, medias) {
     const photographerHeader = document.querySelector(".photograph-header")
@@ -17,13 +21,13 @@ async function displayData(photographer, medias) {
         photographerGallery.appendChild(element)
     })
       const header = new HeaderFactory(photographer);
-      const contact = contactModal
       const userCardDOM = header.toElement();
       photographerHeader.appendChild(userCardDOM);
-
-
-    };
+      modal.innerHTML = contactModal();
+      formListener();
+    }
   
+
   
       
   
