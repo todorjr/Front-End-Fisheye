@@ -6,6 +6,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
         this.image= media.image
+        this.id=media.id
     }
     
     toElement () {
@@ -25,7 +26,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             img.setAttribute("alt", this.title)
             img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
-            img.onclick = function () { location.href = `photographer.html?id=${id}`; };
+            img.onclick = function () { location.href = `photographer.html?id=${this.id}`; };
     
     
     

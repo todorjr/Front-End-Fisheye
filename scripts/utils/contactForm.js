@@ -60,6 +60,11 @@ const form = document.querySelector('#form');
         "\nVotre prenom :\n",prenom.value,
         "\nVotre email :\n",email.value,
         "\nVotre message :\n",textarea.value);
+        const inputs = document.querySelectorAll('#nom, #email, #prenom, #textarea');
+
+        inputs.forEach(input => {
+          input.value = '';
+        });
         closeModal();
     
     });
