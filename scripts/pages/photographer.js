@@ -8,40 +8,76 @@ const url = new URL(window.location.href);
 const photographerId = url.searchParams.get("id");
 const modal = document.querySelector('#contact_modal');
 
+/**
+ * @type {HTMLSelectElement}
+ */
+const filtersElement = document.querySelector('#filter');
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+const mediasSorters = {
+  popular: items => items.sort((a, b) => b.likes - a.likes),
+  date: items => items.sort((a, b) => new Date(b.date) - new Date(a.date)),
+  title: items => items, // TODO implement title sort using localeCompare
+}
+
+// on sauvegarde les données des photographes et fichiers médias
+let photographers = []
+let medias = []
+
+// 1. récupérer l'élément HTML du select
+// 2. écouter l'évènement change du select pour trier les données selon l'ordre sélectionné
+// 3. appeller la fonction dans "sortFunctions" qui correspond à la valeur du filtre (exemple : sortFunctions.popular(medias) retourne la liste des médias trié par nombre de likes)
+
+filtersElement.addEventListener('change', function (event) {
+  const { value = 'popular' } = event.currentTarget
+
+  if (value) {
+    const sortFunction = mediasSorters[value]
+
+    if (sortFunction) {
+      const sortedMedias = sortFunction([ ...medias ])
+
+      displayData(photographers, sortedMedias)
+    }
+  }
+})
 
 async function displayData(photographer, medias) {
-    const photographerHeader = document.querySelector(".photograph-header")
-    const photographerGallery = document.querySelector(".photographer-gallery");
+  const photographerHeaderElement = document.querySelector(".photograph-header");
+  const photographerHeader = photographerHeaderElement.cloneNode();
 
-      const path = `assets/photographers_photos/${photographer.name}`
+  const photographerGalleryElement = document.querySelector(".photographer-gallery");
+  const photographerGallery = photographerGalleryElement.cloneNode();
+
+  const header = new HeaderFactory(photographer);
+  const userCardDOM = header.toElement();
+
+  const path = `assets/photographers_photos/${photographer.name}`
+  
+  medias.forEach((media) => {
+    let item = new FactoryMedia({...media,path:path})
+    const element = item.toElement()
     
-      medias.forEach((media) => {
-        let item = new FactoryMedia({...media,path:path})
-        const element = item.toElement()
-        photographerGallery.appendChild(element)
-    })
-      const header = new HeaderFactory(photographer);
-      const userCardDOM = header.toElement();
-      photographerHeader.appendChild(userCardDOM);
-      modal.innerHTML = contactModal();
-      formListener();
-    }
-  
+    photographerGallery.appendChild(element)
+  })
 
-  
-      
-  
-  async function init() {
-    // Récupère les datas des photographes
-    
-    const photographers = await getPhotographerById(parseInt(photographerId));
-    const medias = await getMediaByPhotographers(parseInt(photographerId));
+  photographerHeader.appendChild(userCardDOM);
 
-    console.log(photographers,"photographer");
-    console.log(medias,"media");
+  // replace old DOM nodes with new ones containing photographer and medias
+  photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
+  photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
 
-    displayData(photographers, medias);
+  modal.innerHTML = contactModal();
 
-  }
+  formListener();
+}
   
-  init();
+async function init () {
+  // Récupère les datas des photographes
+  photographers = await getPhotographerById(parseInt(photographerId));
+  medias = await getMediaByPhotographers(parseInt(photographerId));
+
+  displayData(photographers, medias);
+}
+
+init();
