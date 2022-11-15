@@ -12,8 +12,8 @@ const modal = document.querySelector('#contact_modal');
  * @type {HTMLSelectElement}
  */
 
-// récupérer l'élément HTML du select
 
+// récupérer l'élément HTML du select
 const filtersElement = document.querySelector('#filter');
 
 filtersElement.addEventListener('change', function (event) {
