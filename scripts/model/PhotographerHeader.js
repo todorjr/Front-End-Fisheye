@@ -3,9 +3,20 @@ export default class PhotographerHeader extends Photographer {
     constructor(data){
         super(data)
         this.portrait= data.portrait
+        this.likes= data.likes
     }
     
     toElement () {
+        const priceCard = document.createElement('div');
+        priceCard.classList.add('price-block');
+        const price = document.createElement('div');
+        price.classList.add('photograph-price');
+        price.textContent = this.price + '€/Jour';
+        const totalLikes = document.createElement('div');
+        totalLikes.classList.add('photograph-likes');
+        totalLikes.innerHTML= this.likes
+        priceCard.append(totalLikes, price);
+
         const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
         article.setAttribute("tabindex", "0");
@@ -29,6 +40,7 @@ export default class PhotographerHeader extends Photographer {
     
         article.appendChild(img);
         article.appendChild(div);
+        article.appendChild(priceCard)
         div.appendChild(h2)
         div.appendChild(p);
         div.appendChild(textContent);

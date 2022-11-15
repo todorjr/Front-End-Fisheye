@@ -47,6 +47,21 @@
 .flex-item:nth-of-type(2) { order: 1; }
 .flex-item:nth-of-type(3) { order: 3; }
 
+.price-block{
+    position: fixed;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    height: 60px;
+    width: 376px;
+    border-radius: 5px;
+    background: #DB8876;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
 .open-modal{
         font-size: 20px;
         font-weight: bold;
