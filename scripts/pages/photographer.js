@@ -16,6 +16,20 @@ const modal = document.querySelector('#contact_modal');
 
 const filtersElement = document.querySelector('#filter');
 
+filtersElement.addEventListener('change', function (event) {
+  const { value  } = event.currentTarget
+
+  if (value) {
+    const sortFunction = mediasSorters[value]
+
+    if (sortFunction) {
+      const sortedMedias = sortFunction([ ...medias ])
+
+      displayData(photographers, sortedMedias)
+    }
+  }
+})
+
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 const mediasSorters = {
   popular: items => items.sort((a, b) => b.likes - a.likes),
@@ -37,27 +51,13 @@ let medias = []
 //  écouter l'évènement change du select pour trier les données selon l'ordre sélectionné
 //  appeller la fonction dans "sortFunctions" qui correspond à la valeur du filtre (exemple : sortFunctions.popular(medias) retourne la liste des médias trié par nombre de likes)
 
-filtersElement.addEventListener('change', function (event) {
-  const { value  } = event.currentTarget
-
-  if (value) {
-    const sortFunction = mediasSorters[value]
-
-    if (sortFunction) {
-      const sortedMedias = sortFunction([ ...medias ])
-
-      displayData(photographers, sortedMedias)
-    }
-  }
-})
-
 
 async function displayData(photographer, medias) {
-  const photographerHeaderElement = document.querySelector(".photograph-header");
-  const photographerHeader = photographerHeaderElement.cloneNode();
+  const photographerHeader = document.querySelector(".photograph-header");
+  // const photographerHeader = photographerHeaderElement.cloneNode();
 
-  const photographerGalleryElement = document.querySelector(".photographer-gallery");
-  const photographerGallery = photographerGalleryElement.cloneNode();
+  const photographerGallery = document.querySelector(".photographer-gallery");
+  // const photographerGallery = photographerGalleryElement.cloneNode();
 
   const header = new HeaderFactory(photographer);
   const userCardDOM = header.toElement();
@@ -73,8 +73,8 @@ async function displayData(photographer, medias) {
   photographerHeader.appendChild(userCardDOM);
 
   // replace old DOM nodes with new ones containing photographer and medias
-  photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
-  photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
+  // photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
+  // photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
 
   modal.innerHTML = contactModal();
   formListener();
