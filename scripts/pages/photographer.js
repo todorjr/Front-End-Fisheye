@@ -53,11 +53,11 @@ let medias = []
 
 
 async function displayData(photographer, medias) {
-  const photographerHeader = document.querySelector(".photograph-header");
-  // const photographerHeader = photographerHeaderElement.cloneNode();
+  const photographerHeaderElement = document.querySelector(".photograph-header");
+  const photographerHeader = photographerHeaderElement.cloneNode();
 
-  const photographerGallery = document.querySelector(".photographer-gallery");
-  // const photographerGallery = photographerGalleryElement.cloneNode();
+  const photographerGalleryElement = document.querySelector(".photographer-gallery");
+  const photographerGallery = photographerGalleryElement.cloneNode();
 
   const header = new HeaderFactory(photographer);
   const userCardDOM = header.toElement();
@@ -73,8 +73,8 @@ async function displayData(photographer, medias) {
   photographerHeader.appendChild(userCardDOM);
 
   // replace old DOM nodes with new ones containing photographer and medias
-  // photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
-  // photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
+  photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
+  photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
 
   modal.innerHTML = contactModal();
   formListener();
