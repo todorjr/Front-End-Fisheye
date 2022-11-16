@@ -14,8 +14,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
             div.classList.add('image-gallery-div')
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("image-container")
-    
-    
+            imageDiv.setAttribute("data-idMedia",this.id)
+
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
     
@@ -27,9 +27,6 @@ export class ImageGalleryElement extends BaseGalleryElement {
             img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
            
-    
-    
-    
             const titleText = document.createElement( "h4" )
             titleText.classList.add("imageTitle")
             titleText.innerText = this.title
