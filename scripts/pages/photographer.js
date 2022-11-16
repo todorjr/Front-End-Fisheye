@@ -75,7 +75,7 @@ async function displayData(photographer, medias) {
   console.log("listNodeMedia", listNodeMedia);
   medias.forEach((media) => {
     let currentNode;
-    if(!listNodeMedia){
+    if(listNodeMedia){
       const arrayNode=Array.from(listNodeMedia)
       currentNode = arrayNode.find(node=>{
         const n = node.getAttribute("data-idMedia")
