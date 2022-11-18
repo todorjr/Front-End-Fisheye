@@ -23,7 +23,7 @@ filtersElement.addEventListener('change', function (event) {
     const sortFunction = mediasSorters[value]
 
     if (sortFunction) {
-      const sortedMedias = sortFunction([ ...medias ])
+      const sortedMedias = sortFunction(medias)
 
       displayData(photographers, sortedMedias)
     }
@@ -71,7 +71,7 @@ async function displayData(photographer, medias) {
   // const userCardDOM = header.toElement();
 
   const path = `assets/photographers_photos/${photographer.name}`
-  const listNodeMedia=document.querySelectorAll("media-container");
+  const listNodeMedia=document.querySelectorAll(".media-gallery-div");
   console.log("listNodeMedia", listNodeMedia);
   medias.forEach((media) => {
     let currentNode;

@@ -11,10 +11,10 @@ export class VideoGalleryElement extends BaseGalleryElement {
     toElement () {
         
             const div = document.createElement("div")
-            div.classList.add("video-gallery-div")
+            div.classList.add("media-gallery-div")
             const videoDiv = document.createElement("div")
-            videoDiv.classList.add("video-container")
-            videoDiv.setAttribute("data-idMedia",this.id)
+            videoDiv.classList.add("media-container")
+            div.setAttribute("data-idMedia",this.id)
 
     
             const textDiv = document.createElement("div")

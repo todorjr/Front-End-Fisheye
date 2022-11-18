@@ -11,10 +11,10 @@ export class ImageGalleryElement extends BaseGalleryElement {
     
     toElement () {
             const div = document.createElement('div')
-            div.classList.add('image-gallery-div')
+            div.classList.add('media-gallery-div')
             const imageDiv = document.createElement("div")
-            imageDiv.classList.add("image-container")
-            imageDiv.setAttribute("data-idMedia",this.id)
+            imageDiv.classList.add("media-container")
+            div.setAttribute("data-idMedia",this.id)
 
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
