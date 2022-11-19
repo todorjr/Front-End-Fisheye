@@ -61,15 +61,7 @@ const displayHeader=(photographer)=>{
 }
 
 async function displayData(photographer, medias) {
-  // const photographerHeaderElement = document.querySelector(".photograph-header");
-  // const photographerHeader = photographerHeaderElement.cloneNode();
-
   const photographerGallery = document.querySelector(".photographer-gallery");
-  // const photographerGallery = photographerGalleryElement.cloneNode();
-
-  // const header = new HeaderFactory(photographer);
-  // const userCardDOM = header.toElement();
-
   const path = `assets/photographers_photos/${photographer.name}`
   const listNodeMedia=document.querySelectorAll(".media-gallery-div");
   console.log("listNodeMedia", listNodeMedia);
@@ -92,13 +84,9 @@ async function displayData(photographer, medias) {
     }
    
   })
-  // replace old DOM nodes with new ones containing photographer and medias
-  // photographerHeaderElement.parentElement.replaceChild(photographerHeader, photographerHeaderElement)
-  //photographerGalleryElement.parentElement.replaceChild(photographerGallery, photographerGalleryElement)
 
 }
 
-  
 async function init () {
   // Récupère les datas des photographes
   photographers = await getPhotographerById(parseInt(photographerId));

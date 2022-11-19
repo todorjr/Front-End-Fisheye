@@ -12,9 +12,9 @@ export class ImageGalleryElement extends BaseGalleryElement {
     toElement () {
             const div = document.createElement('div')
             div.classList.add('media-gallery-div')
+            div.setAttribute("data-idMedia",this.id)
             const imageDiv = document.createElement("div")
             imageDiv.classList.add("media-container")
-            div.setAttribute("data-idMedia",this.id)
 
             const textDiv = document.createElement("div")
             textDiv.classList.add("text-container")
@@ -39,6 +39,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             heart.innerHTML = `<i class="fa fa-heart-o"></i>`
             like.classList.add("imageLike");
             like.textContent=this.likes
+            
             heart.addEventListener("click",()=> {
 
                 if (heart.dataset.liked !== 'true') {
@@ -64,9 +65,6 @@ export class ImageGalleryElement extends BaseGalleryElement {
                 }
        
             },)
-            
-         
-    
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)
             textDiv.appendChild(heart)
