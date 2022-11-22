@@ -62,7 +62,6 @@ async function displayHeader (photographer) {
 
 export default function lightBox ()  {
   const lightbox = document.getElementById('lightbox')
-
   const images = document.querySelectorAll('img')
   images.forEach(image => {
     image.addEventListener('click', () => {
