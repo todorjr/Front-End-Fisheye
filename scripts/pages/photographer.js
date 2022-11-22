@@ -60,6 +60,30 @@ const displayHeader=(photographer)=>{
   formListener();
 }
 
+export default function lightBox ()  {
+  const lightbox = document.createElement('div')
+  lightbox.id = 'lightbox'
+  document.body.appendChild(lightbox)
+
+  const images = document.querySelectorAll('img, video')
+  images.forEach(image => {
+    image.addEventListener('click', () => {
+      lightbox.classList.add('active')
+      const img = document.createElement('img')
+      img.src = image.src
+      while (lightbox.firstChild) {
+        lightbox.removeChild(lightbox.firstChild)
+      }
+      lightbox.appendChild(img)
+    })
+  })
+
+  lightbox.addEventListener('click', e => {
+    if (e.target !== e.currentTarget) return
+    lightbox.classList.remove('active')
+  })
+}
+
 async function displayData(photographer, medias) {
   const photographerGallery = document.querySelector(".photographer-gallery");
   const path = `assets/photographers_photos/${photographer.name}`

@@ -2,6 +2,8 @@
  * Generate a video element.
  */
 import { BaseGalleryElement } from "./BaseGalleryElement.js"
+import  lightBox  from "../pages/photographer.js"
+
 export class VideoGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
@@ -29,6 +31,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
             mp4.setAttribute("src",videoData)
             mp4.setAttribute("tabindex", 0)
             mp4.setAttribute("type","video/mp4")
+            mp4.addEventListener("click", lightBox)
     
     
             const titleText = document.createElement( "h4" )

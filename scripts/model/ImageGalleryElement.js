@@ -2,6 +2,7 @@
  * Generate a image element.
  */
 import { BaseGalleryElement } from "./BaseGalleryElement.js"
+import  lightBox  from "../pages/photographer.js"
 export class ImageGalleryElement extends BaseGalleryElement {
     constructor(media){
         super(media)
@@ -26,6 +27,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             img.setAttribute("alt", this.title)
             img.setAttribute("src",picture)
             img.setAttribute("tabindex", 0)
+            img.addEventListener("click", lightBox)
            
             const titleText = document.createElement( "h4" )
             titleText.classList.add("imageTitle")
