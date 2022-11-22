@@ -50,7 +50,7 @@ let medias = []
 
 //  écouter l'évènement change du select pour trier les données selon l'ordre sélectionné
 //  appeller la fonction dans "sortFunctions" qui correspond à la valeur du filtre (exemple : sortFunctions.popular(medias) retourne la liste des médias trié par nombre de likes)
-const displayHeader=(photographer)=>{
+async function displayHeader (photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
   
   const header = new HeaderFactory(photographer);
@@ -73,6 +73,19 @@ export default function lightBox ()  {
         lightbox.removeChild(lightbox.firstChild)
       }
       lightbox.appendChild(img)
+    });
+  })
+  const videos = document.querySelectorAll('video')
+  videos.forEach(video => {
+    video.addEventListener('click', () => {
+      lightbox.classList.add('active')
+      const mp4 = document.createElement('video')
+      mp4.src = video.src
+      mp4.setAttribute("controls","controls")
+      while (lightbox.firstChild) {
+        lightbox.removeChild(lightbox.firstChild)
+      }
+      lightbox.appendChild(mp4)
     });
   })
 
