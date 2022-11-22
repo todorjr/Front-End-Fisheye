@@ -61,11 +61,9 @@ const displayHeader=(photographer)=>{
 }
 
 export default function lightBox ()  {
-  const lightbox = document.createElement('div')
-  lightbox.id = 'lightbox'
-  document.body.appendChild(lightbox)
+  const lightbox = document.getElementById('lightbox')
 
-  const images = document.querySelectorAll('img, video')
+  const images = document.querySelectorAll('img')
   images.forEach(image => {
     image.addEventListener('click', () => {
       lightbox.classList.add('active')
@@ -75,7 +73,7 @@ export default function lightBox ()  {
         lightbox.removeChild(lightbox.firstChild)
       }
       lightbox.appendChild(img)
-    })
+    });
   })
 
   lightbox.addEventListener('click', e => {
