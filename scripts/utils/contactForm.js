@@ -89,3 +89,5 @@ document.onkeydown = function(e) {
     }
   }
 
+  // note
+  //! Add esc button for exit the contact modal

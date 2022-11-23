@@ -113,6 +113,17 @@ async function displayData(photographer, medias) {
       photographerGallery.appendChild(currentNode)
     }else{
       let item = new FactoryMedia({...media,path:path})
+      const priceCard = document.createElement('div');
+      priceCard.classList.add('price-block');
+      const price = document.createElement('div');
+      price.classList.add('photograph-price');
+      price.textContent = photographer.price + '€/Jour';
+      let totalLikes = document.createElement('div');
+      totalLikes.classList.add('photograph-likes');
+      photographer.sum = totalLikes + item.likes
+      totalLikes = photographer.sum
+      console.log("photographer: " + photographer.likes);
+      priceCard.append(totalLikes, price);
       const element = item.toElement()
       photographerGallery.appendChild(element)
     }
