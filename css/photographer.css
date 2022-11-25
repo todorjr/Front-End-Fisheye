@@ -262,8 +262,21 @@ padding-left: 5px;
     max-height: 80%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
-
-
+  .right-arrow {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+  .left-arrow {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+  }
+  .close-lightbox{
+    position: absolute;
+    right: 50px;
+    top:50px;
+  }
 .dropdown{
 margin: 20px 100px ;
 }
