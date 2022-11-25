@@ -56,7 +56,6 @@ export class VideoGalleryElement extends BaseGalleryElement {
                     heart.dataset.liked = 'true';
                     like.textContent = ++this.likes
                     heart.classList.toggle('red');
-                    alert(`You had liked ${this.title} 🥳!`)
 
                 } else  {
                     // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
@@ -65,11 +64,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
                     like.textContent = --this.likes
                     heart.classList.remove('red');
                     heart.innerHTML = `<i class="fa fa-heart-o"></i>`
-                    alert(`You unliked ${this.title} 😫!`)
-
-
-                                }
-       
+                }
             },)
     
             textDiv.appendChild(titleText)
