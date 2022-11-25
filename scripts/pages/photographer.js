@@ -118,6 +118,11 @@ async function displayData(photographer, medias) {
   const listNodeMedia=document.querySelectorAll(".media-gallery-div");
   const sum = 0;
   const totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
+  const heart = document.createElement( "span" )
+  heart.setAttribute("tabindex", 0)
+  heart.classList.add("heart")
+  heart.setAttribute("id","heart");
+  heart.innerHTML = `<i class="fa fa-heart-o"></i>`
 
   const priceCard = document.createElement('div');
   priceCard.classList.add('price-block');
@@ -127,7 +132,7 @@ async function displayData(photographer, medias) {
   let totalLikes = document.createElement('div');
   totalLikes.classList.add('photograph-likes');
   totalLikes.innerHTML = totalLikesSum;
-  priceCard.append(totalLikes, price);
+  priceCard.append(totalLikes,heart, price);
   photographerGallery.appendChild(priceCard)
 
   medias.forEach((media) => {

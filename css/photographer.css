@@ -61,6 +61,16 @@
     font-weight: 500;
     font-size: 24px;
 }
+.price-block .heart {
+    flex:1;
+    margin-left: 20px;
+}
+.price-block .photograph-price {
+    margin-right: 20px;
+}
+.price-block .photograph-likes {
+    margin-left: 10px;
+}
 
 .open-modal{
         font-size: 20px;
