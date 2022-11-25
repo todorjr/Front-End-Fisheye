@@ -122,7 +122,7 @@ async function displayData(photographer, medias) {
   heart.setAttribute("tabindex", 0)
   heart.classList.add("heart")
   heart.setAttribute("id","heart");
-  heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+  heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
 
   const priceCard = document.createElement('div');
   priceCard.classList.add('price-block');
