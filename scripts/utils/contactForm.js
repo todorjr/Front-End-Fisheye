@@ -46,11 +46,11 @@ export function formListener () {
 
     //add close button select x button and add event listener also for send message do the same 
 
-const nom = document.getElementById('nom');
-const email = document.getElementById('email');
-const prenom = document.getElementById('prenom');
-const textarea = document.getElementById('textarea');
-const form = document.querySelector('#form');
+    const nom = document.getElementById('nom');
+    const email = document.getElementById('email');
+    const prenom = document.getElementById('prenom');
+    const textarea = document.getElementById('textarea');
+    const form = document.querySelector('#form');
  
     form.addEventListener('submit', function (e) {
         // prevent the form from submitting
@@ -77,17 +77,13 @@ const form = document.querySelector('#form');
 document.onkeydown = function(e) {
     let evt = e || window.event; // for more compatibility
     let keyCode = evt.keyCode;
-  
-    console.log(keyCode + " was pressed");
-  
+    
     switch(keyCode) {
         case 13: // left key was pressed
             closeModal();
             e.preventDefault(); // prevents the default behaviour to trigger
             break;
-      
     }
   }
-
   // note
   //! Add esc button for exit the contact modal

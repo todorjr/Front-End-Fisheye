@@ -107,6 +107,7 @@ export default function lightBox ()  {
       lightbox.appendChild(leftArrow)
       lightbox.appendChild(mp4)
       lightbox.appendChild(rightArrow)
+      lightbox.appendChild(closeBtn)
     });
   })
 }
@@ -115,6 +116,20 @@ async function displayData(photographer, medias) {
   const photographerGallery = document.querySelector(".photographer-gallery");
   const path = `assets/photographers_photos/${photographer.name}`
   const listNodeMedia=document.querySelectorAll(".media-gallery-div");
+  const sum = 0;
+  const totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
+
+  const priceCard = document.createElement('div');
+  priceCard.classList.add('price-block');
+  const price = document.createElement('div');
+  price.classList.add('photograph-price');
+  price.textContent = photographer.price + '€/Jour';
+  let totalLikes = document.createElement('div');
+  totalLikes.classList.add('photograph-likes');
+  totalLikes.innerHTML = totalLikesSum;
+  priceCard.append(totalLikes, price);
+  photographerGallery.appendChild(priceCard)
+
   medias.forEach((media) => {
     let currentNode;
     if(listNodeMedia){
@@ -129,18 +144,8 @@ async function displayData(photographer, medias) {
       photographerGallery.appendChild(currentNode)
     }else {
       let item = new FactoryMedia({...media,path:path})
-      const priceCard = document.createElement('div');
-      priceCard.classList.add('price-block');
-      const price = document.createElement('div');
-      price.classList.add('photograph-price');
-      price.textContent = photographer.price + '€/Jour';
-      let totalLikes = document.createElement('div');
-      totalLikes.classList.add('photograph-likes');
-      totalLikes.innerHTML =
-      priceCard.append(totalLikes, price);
       const element = item.toElement()
       photographerGallery.appendChild(element)
-      photographerGallery.appendChild(priceCard)
     }
    
   })
