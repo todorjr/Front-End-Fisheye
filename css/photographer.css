@@ -268,22 +268,26 @@ padding-left: 5px;
     align-items: center;
   }
   
-  #lightbox img {
+  #lightbox img, video{
     max-width: 90%;
     max-height: 80%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 5px;
   }
   .right-arrow {
     font-size: 50px;
     font-weight: 600;
     margin-left: 50px;
     color: rgba(145,28,28,255);
+    cursor: pointer;
+
   }
   .left-arrow {
     font-size: 50px;
     font-weight: 600;
     margin-right: 50px;
     color: rgba(145,28,28,255);
+    cursor: pointer;
   }
   .close-lightbox{
     position: absolute;
@@ -294,6 +298,7 @@ padding-left: 5px;
     font-weight: 600;
     background: none;
     border: none;
+    cursor: pointer;
   }
 .dropdown{
 margin: 20px 100px ;

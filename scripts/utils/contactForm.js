@@ -33,6 +33,7 @@ function displayModal() {
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+
 }
 
 
@@ -70,20 +71,15 @@ export function formListener () {
     });
 }
 
-
-
-
 // accessibility closing modal when key enter is pressed
 document.onkeydown = function(e) {
     let evt = e || window.event; // for more compatibility
     let keyCode = evt.keyCode;
     
     switch(keyCode) {
-        case 13: // left key was pressed
+        case 27: 
             closeModal();
             e.preventDefault(); // prevents the default behaviour to trigger
             break;
     }
   }
-  // note
-  //! Add esc button for exit the contact modal

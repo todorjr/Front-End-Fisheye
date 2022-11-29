@@ -63,23 +63,6 @@ async function displayHeader (photographer) {
 export default function lightBox ()  {
   const lightbox = document.getElementById('lightbox')
   const images = document.querySelectorAll('img')
-
-  const closeBtn = document.createElement('button')
-  closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
-  closeBtn.classList.add('close-lightbox')
-  closeBtn.addEventListener('click', e => {
-    if (e.target !== e.currentTarget) return
-    lightbox.classList.remove('active')
-  })
-
-  const rightArrow = document.createElement ('a')
-  rightArrow.classList.add('right-arrow')
-  rightArrow.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
-
-  const leftArrow = document.createElement ('a')
-  leftArrow.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`
-  leftArrow.classList.add('left-arrow')
-
   images.forEach(image => {
     image.addEventListener('click', () => {
       lightbox.classList.add('active')
@@ -94,6 +77,7 @@ export default function lightBox ()  {
       lightbox.appendChild(closeBtn)
     });
   })
+
   const videos = document.querySelectorAll('video')
   videos.forEach(video => {
     video.addEventListener('click', () => {
@@ -110,6 +94,27 @@ export default function lightBox ()  {
       lightbox.appendChild(closeBtn)
     });
   })
+
+  const closeBtn = document.createElement('button')
+  closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
+  closeBtn.classList.add('close-lightbox')
+  closeBtn.setAttribute('title', 'Close lightbox');
+  closeBtn.addEventListener('click', e => {
+    if (e.target !== e.currentTarget) return
+    lightbox.classList.remove('active')
+  })
+
+  const rightArrow = document.createElement ('a')
+  rightArrow.classList.add('right-arrow')
+  rightArrow.setAttribute('title', 'Next media');
+  rightArrow.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
+ 
+
+  const leftArrow = document.createElement ('a')
+  leftArrow.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`
+  leftArrow.classList.add('left-arrow')
+  leftArrow.setAttribute('title', 'Previous media');
+
 }
 
 async function displayData(photographer, medias) {
@@ -154,9 +159,7 @@ async function displayData(photographer, medias) {
     }
    
   })
-
 }
-
 async function init () {
   // Récupère les datas des photographes
   photographers = await getPhotographerById(parseInt(photographerId));
