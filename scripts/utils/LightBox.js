@@ -1,5 +1,5 @@
 /**
- * A LightBox whaaa !!
+ * A LightBox !
  */
 export class LightBox {
     /**
@@ -27,7 +27,6 @@ export class LightBox {
      * @param {{ id: string, url: string, type: 'image' | 'video' }} media
      */
     open(media) {
-        // @TODO: optimize lightbox prev/next by not rendering all elements but only image
         let mediaElement
 
         const closeBtn = document.createElement('button')
@@ -45,6 +44,11 @@ export class LightBox {
         prevBtn.classList.add('left-arrow')
         prevBtn.setAttribute('title', 'Previous media');
 
+        prevBtn.addEventListener('click', event => {
+            event.preventDefault()
+            this.displayPrev(media)
+        })
+
 
         nextBtn.classList.add('right-arrow')
         nextBtn.setAttribute('title', 'Next media');
@@ -59,7 +63,9 @@ export class LightBox {
             mediaElement = document.createElement('img')
             mediaElement.src = media.url
         } else if (media.type === 'video') {
-            alert('TO DO !');
+            mediaElement = document.createElement('video')
+            mediaElement.setAttribute("controls", "controls")
+            mediaElement.src = media.url
         }
 
         if (mediaElement) {
@@ -79,5 +85,10 @@ export class LightBox {
         const nextMedia = this.mediaResolver('next', currentMedia)
 
         this.open(nextMedia)
+    }
+    displayPrev(currentMedia) {
+        const prevMedia = this.mediaResolver('prev', currentMedia)
+
+        this.open(prevMedia)
     }
 }

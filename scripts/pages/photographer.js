@@ -110,6 +110,7 @@ async function init() {
   // Récupère les datas des photographes
   const photographer = await getPhotographerById(parseInt(photographerId));
   const medias = await getMediaByPhotographers(parseInt(photographerId));
+  console.log(medias.length, 'Medias')
 
   const lightboxElement = document.querySelector('#lightbox')
   const lightbox = new LightBox(lightboxElement)
@@ -117,19 +118,36 @@ async function init() {
   lightbox.setMediaResolver(function (type, { id: currentMediaId }) {
     switch (type) {
       case 'next': {
+
         let nextMediaId = medias.findIndex(({ id }) => id === currentMediaId) + 1
+        console.log(nextMediaId, 'NEXT media');
 
         if (nextMediaId >= medias.length) {
           nextMediaId = 0
         }
 
-        const nextMedia = medias[nextMediaId]
-
+        let nextMedia = medias[nextMediaId]
         return {
           id: nextMedia.id,
           url: `${MEDIA_BASE_PATH(photographer)}/${nextMedia.image}`,
           type: 'image',
         }
+      }
+      case 'prev': {
+        let prevMediaId = medias.findIndex(({ id }) => id === currentMediaId) - 1
+        console.log(prevMediaId, 'PREV media');
+
+        if (prevMediaId < 0) {
+          prevMediaId = medias.length - 1
+        }
+
+        let prevMedia = medias[prevMediaId]
+        return {
+          id: prevMedia.id,
+          url: `${MEDIA_BASE_PATH(photographer)}/${prevMedia.image}`,
+          type: 'image',
+        }
+
       }
     }
   })
