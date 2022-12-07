@@ -2,12 +2,12 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 
-	modal.style.display = "block";
+    modal.style.display = "block";
 
     const firstFocusableElement = modal.querySelector(".modal-title"); // get first element to be focused inside modal
     const lastFocusableElement = modal.querySelector(".closeButton"); // get last element to be focused inside modal
 
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         let isTabPressed = e.key === 'Tab';
 
         if (!isTabPressed) {
@@ -22,7 +22,7 @@ function displayModal() {
             if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
                 e.preventDefault();
                 firstFocusableElement.focus(); // add focus for the first focusable element
-        }
+            }
         }
     });
 
@@ -39,11 +39,11 @@ function closeModal() {
 
 //form data from user
 
-export function formListener () {
+export function formListener() {
     const openButton = document.querySelector('.open-modal');
-    openButton.addEventListener('click',()=>displayModal());
+    openButton.addEventListener('click', () => displayModal());
     const contactButton = document.querySelector('.closeButton');
-    contactButton.addEventListener('click',()=>closeModal());
+    contactButton.addEventListener('click', () => closeModal());
 
     //add close button select x button and add event listener also for send message do the same 
 
@@ -52,34 +52,34 @@ export function formListener () {
     const prenom = document.getElementById('prenom');
     const textarea = document.getElementById('textarea');
     const form = document.querySelector('#form');
- 
+
     form.addEventListener('submit', function (e) {
         // prevent the form from submitting
         e.preventDefault();
         console.log(
-        "Votre nom :\n",nom.value,
-        "\nVotre prenom :\n",prenom.value,
-        "\nVotre email :\n",email.value,
-        "\nVotre message :\n",textarea.value);
+            "Votre nom :\n", nom.value,
+            "\nVotre prenom :\n", prenom.value,
+            "\nVotre email :\n", email.value,
+            "\nVotre message :\n", textarea.value);
         const inputs = document.querySelectorAll('#nom, #email, #prenom, #textarea');
 
         inputs.forEach(input => {
-          input.value = '';
+            input.value = '';
         });
         closeModal();
-    
+
     });
 }
 
 // accessibility closing modal when key enter is pressed
-document.onkeydown = function(e) {
+document.onkeydown = function (e) {
     let evt = e || window.event; // for more compatibility
-    let keyCode = evt.keyCode;
-    
-    switch(keyCode) {
-        case 27: 
+    let keyCode = evt;
+
+    switch (keyCode) {
+        case '27':
             closeModal();
             e.preventDefault(); // prevents the default behaviour to trigger
             break;
     }
-  }
+}

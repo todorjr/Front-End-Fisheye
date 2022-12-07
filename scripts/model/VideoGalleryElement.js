@@ -6,7 +6,7 @@ import { BaseGalleryElement } from "./BaseGalleryElement.js"
 export class VideoGalleryElement extends BaseGalleryElement {
     constructor(media, lightbox) {
         super(media)
-
+        this.id = media.id
         this.video = media.video
         this.lightbox = lightbox
     }

@@ -110,47 +110,44 @@ async function init() {
   // Récupère les datas des photographes
   const photographer = await getPhotographerById(parseInt(photographerId));
   const medias = await getMediaByPhotographers(parseInt(photographerId));
-  console.log(medias.length, 'Medias')
+  console.log(medias, 'medias')
 
   const lightboxElement = document.querySelector('#lightbox')
   const lightbox = new LightBox(lightboxElement)
 
-  lightbox.setMediaResolver(function (type, { id: currentMediaId }) {
+  lightbox.setMediaResolver(function (type, { id: currentMediaId }) {  //function to change lightbox media 
     switch (type) {
       case 'next': {
-
         let nextMediaId = medias.findIndex(({ id }) => id === currentMediaId) + 1
-        console.log(nextMediaId, 'NEXT media');
-
         if (nextMediaId >= medias.length) {
           nextMediaId = 0
         }
-
         let nextMedia = medias[nextMediaId]
+        const lbMedia = nextMedia.image ? nextMedia.image : nextMedia.video
+
         return {
           id: nextMedia.id,
-          url: `${MEDIA_BASE_PATH(photographer)}/${nextMedia.image}`,
-          type: 'image',
+          url: `${MEDIA_BASE_PATH(photographer)}/${lbMedia}`,
+          type: (nextMedia.image !== undefined) ? 'image' : 'video',
         }
       }
+
       case 'prev': {
         let prevMediaId = medias.findIndex(({ id }) => id === currentMediaId) - 1
-        console.log(prevMediaId, 'PREV media');
-
         if (prevMediaId < 0) {
           prevMediaId = medias.length - 1
         }
-
         let prevMedia = medias[prevMediaId]
+        const lbMedia = prevMedia.image ? prevMedia.image : prevMedia.video
         return {
           id: prevMedia.id,
-          url: `${MEDIA_BASE_PATH(photographer)}/${prevMedia.image}`,
-          type: 'image',
+          url: `${MEDIA_BASE_PATH(photographer)}/${lbMedia}`,
+          type: (prevMedia.image !== undefined) ? 'image' : 'video',
         }
-
       }
     }
   })
+
 
   displayHeader(photographer);
   displayData(photographer, medias, lightbox);

@@ -39,49 +39,49 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     type: 'image',
                 })
             })
+
+            const titleText = document.createElement("h4")
+            titleText.classList.add("imageTitle")
+            titleText.innerText = this.title
+
+            const like = document.createElement("p")
+            const heart = document.createElement("span")
+            heart.setAttribute("tabindex", 0)
+            heart.classList.add("heart")
+            heart.setAttribute("id", "heart");
+            heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+            like.classList.add("imageLike");
+            like.textContent = this.likes
+
+            heart.addEventListener("click", () => {
+
+                if (heart.dataset.liked !== 'true') {
+                    // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
+                    // la valeur est égale à true
+                    heart.dataset.liked = 'true';
+                    like.textContent = ++this.likes
+                    heart.classList.toggle('red');
+                    heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
+                } else {
+                    // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
+                    // on supprime la valeur dans le dataset
+                    heart.dataset.liked = undefined;
+                    like.textContent = --this.likes
+                    heart.classList.remove('red');
+                    heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+                }
+            },)
+            textDiv.appendChild(titleText)
+            textDiv.appendChild(like)
+            textDiv.appendChild(heart)
+
+            imageDiv.appendChild(img)
+            div.appendChild(imageDiv)
+            div.appendChild(textDiv)
+
+
+            return div
         }
-
-        const titleText = document.createElement("h4")
-        titleText.classList.add("imageTitle")
-        titleText.innerText = this.title
-
-        const like = document.createElement("p")
-        const heart = document.createElement("span")
-        heart.setAttribute("tabindex", 0)
-        heart.classList.add("heart")
-        heart.setAttribute("id", "heart");
-        heart.innerHTML = `<i class="fa fa-heart-o"></i>`
-        like.classList.add("imageLike");
-        like.textContent = this.likes
-
-        heart.addEventListener("click", () => {
-
-            if (heart.dataset.liked !== 'true') {
-                // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
-                // la valeur est égale à true
-                heart.dataset.liked = 'true';
-                like.textContent = ++this.likes
-                heart.classList.toggle('red');
-                heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-
-            } else {
-                // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
-                // on supprime la valeur dans le dataset
-                heart.dataset.liked = undefined;
-                like.textContent = --this.likes
-                heart.classList.remove('red');
-                heart.innerHTML = `<i class="fa fa-heart-o"></i>`
-            }
-        },)
-        textDiv.appendChild(titleText)
-        textDiv.appendChild(like)
-        textDiv.appendChild(heart)
-
-        imageDiv.appendChild(img)
-        div.appendChild(imageDiv)
-        div.appendChild(textDiv)
-
-
-        return div
     }
 }

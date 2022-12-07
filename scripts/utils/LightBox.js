@@ -43,6 +43,8 @@ export class LightBox {
         prevBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`
         prevBtn.classList.add('left-arrow')
         prevBtn.setAttribute('title', 'Previous media');
+        prevBtn.setAttribute("tabindex", 0)
+
 
         prevBtn.addEventListener('click', event => {
             event.preventDefault()
@@ -53,6 +55,9 @@ export class LightBox {
         nextBtn.classList.add('right-arrow')
         nextBtn.setAttribute('title', 'Next media');
         nextBtn.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
+        nextBtn.setAttribute("tabindex", 0)
+
+
 
         nextBtn.addEventListener('click', event => {
             event.preventDefault()
@@ -62,9 +67,12 @@ export class LightBox {
         if (media.type === 'image') {
             mediaElement = document.createElement('img')
             mediaElement.src = media.url
+            mediaElement.setAttribute("tabindex", 0)
+
         } else if (media.type === 'video') {
             mediaElement = document.createElement('video')
             mediaElement.setAttribute("controls", "controls")
+            mediaElement.setAttribute("tabindex", 0)
             mediaElement.src = media.url
         }
 
@@ -90,5 +98,18 @@ export class LightBox {
         const prevMedia = this.mediaResolver('prev', currentMedia)
 
         this.open(prevMedia)
+    }
+}
+
+
+document.onkeydown = function (e) {
+    let evt = e || window.event; // for more compatibility
+    let keyCode = evt.keyCode;
+
+    switch (keyCode) {
+        case 27:
+            lightbox.classList.remove('active')
+            e.preventDefault(); // prevents the default behaviour to trigger
+            break;
     }
 }
