@@ -36,26 +36,7 @@ async function displayHeader(photographer) {
 
 async function displayData(photographer, medias, lightbox) {
   const photographerGallery = document.querySelector(".photographer-gallery");
-
   const listNodeMedia = document.querySelectorAll(".media-gallery-div");
-  const sum = 0;
-  const totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
-  const heart = document.createElement("span")
-  heart.setAttribute("tabindex", 0)
-  heart.classList.add("heart")
-  heart.setAttribute("id", "heart");
-  heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-
-  const priceCard = document.createElement('div');
-  priceCard.classList.add('price-block');
-  const price = document.createElement('div');
-  price.classList.add('photograph-price');
-  price.textContent = photographer.price + '€/Jour';
-  let totalLikes = document.createElement('div');
-  totalLikes.classList.add('photograph-likes');
-  totalLikes.innerHTML = totalLikesSum;
-  priceCard.append(totalLikes, heart, price);
-  photographerGallery.appendChild(priceCard)
 
   medias.forEach((media) => {
     let currentNode;
@@ -153,26 +134,33 @@ async function init() {
   displayData(photographer, medias, lightbox);
   displayFilters(photographer, medias);
   displayContactModal()
+
+  const sum = 0;
+  let totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
+  const heart = document.createElement("span")
+  heart.setAttribute("tabindex", 0)
+  heart.classList.add("heartPrice")
+  heart.setAttribute("id", "heart");
+  heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
+  const priceCardHeart = document.querySelector(".heart")
+  console.log(priceCardHeart.hasAttribute("data-liked"), 'price');
+
+
+  const photographerGallery = document.querySelector(".photographer-gallery");
+  const priceCard = document.createElement('div');
+  priceCard.classList.add('price-block');
+  const price = document.createElement('div');
+  price.classList.add('photograph-price');
+  price.textContent = photographer.price + '€/Jour';
+  let totalLikes = document.createElement('div');
+  totalLikes.classList.add('photograph-likes');
+  totalLikes.textContent = totalLikesSum
+  priceCard.append(totalLikes, heart, price);
+  photographerGallery.appendChild(priceCard)
+
+
 }
 
 document.addEventListener('DOMContentLoaded', init)
 
-// export default function lightBox() {
-//   const videos = document.querySelectorAll('video')
-
-//   videos.forEach(video => {
-//     video.addEventListener('click', () => {
-//       lightbox.classList.add('active')
-//       const mp4 = document.createElement('video')
-//       mp4.src = video.src
-//       mp4.setAttribute("controls", "controls")
-//       while (lightbox.firstChild) {
-//         lightbox.removeChild(lightbox.firstChild)
-//       }
-//       lightbox.appendChild(leftArrow)
-//       lightbox.appendChild(mp4)
-//       lightbox.appendChild(rightArrow)
-//       lightbox.appendChild(closeBtn)
-//     });
-//   })
-// }
