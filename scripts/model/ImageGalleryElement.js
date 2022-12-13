@@ -18,15 +18,14 @@ export class ImageGalleryElement extends BaseGalleryElement {
         div.setAttribute("data-idMedia", this.id)
         const imageDiv = document.createElement("div")
         imageDiv.classList.add("media-container")
-
         const textDiv = document.createElement("div")
         textDiv.classList.add("text-container")
-
         const picture = `${this.path}/${this.image}`
 
         const img = document.createElement("img")
         img.classList.add("galleryPics")
         img.setAttribute("alt", this.title)
+        img.setAttribute("title", this.title)
         img.setAttribute("src", picture)
         img.setAttribute("tabindex", 0)
 
@@ -58,6 +57,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
             const like = document.createElement("p")
             const heart = document.createElement("span")
             heart.setAttribute("tabindex", 0)
+            heart.setAttribute("aria-label", 'likes')
+
             heart.classList.add("heart")
             heart.setAttribute("id", "heart");
             heart.innerHTML = `<i class="fa fa-heart-o"></i>`

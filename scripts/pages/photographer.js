@@ -1,14 +1,15 @@
+
 import { getPhotographerById, getMediaByPhotographers } from "../api/index.js";
 import { getGalleryElement } from "../factories/FactoryMedia.js";
 import HeaderFactory from "../factories/HeaderFactory.js";
 import contactModal from "../utils/contactModal.js";
 import { formListener } from "../utils/contactForm.js";
-
 import { LightBox } from "../utils/LightBox.js";
 
 const MEDIA_BASE_PATH = photographer => `assets/photographers_photos/${photographer.name}`
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+// mediasSorters() will return the same elements of items but now sorted by date,title or popularity
 const mediasSorters = {
   popular: items => items.sort((a, b) => b.likes - a.likes),
   date: items => items.sort((a, b) => new Date(b.date) - new Date(a.date)),
@@ -23,50 +24,53 @@ const mediasSorters = {
   }),
 }
 
-//  écouter l'évènement change du select pour trier les données selon l'ordre sélectionné
-//  appeller la fonction dans "sortFunctions" qui correspond à la valeur du filtre (exemple : sortFunctions.popular(medias) retourne la liste des médias trié par nombre de likes)
+// displayHeader() function will append header content in photographer page
 async function displayHeader(photographer) {
   const photographerHeader = document.querySelector(".photograph-header");
-
   const header = new HeaderFactory(photographer);
   const userCardDOM = header.toElement();
-
   photographerHeader.appendChild(userCardDOM);
 }
 
+// displayData() function will create gallery elements for a given id/ photographer
 async function displayData(photographer, medias, lightbox) {
   const photographerGallery = document.querySelector(".photographer-gallery");
   const listNodeMedia = document.querySelectorAll(".media-gallery-div");
-  const sum = 0;
-  let totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
   const heart = document.createElement("span")
   heart.setAttribute("tabindex", 0)
   heart.classList.add("heartPrice")
   heart.setAttribute("id", "heart");
   heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-
   const priceCard = document.createElement('div');
   priceCard.classList.add('price-block');
   const price = document.createElement('div');
+  const sum = 0;
   price.classList.add('photograph-price');
   price.textContent = photographer.price + '€/Jour';
+  let totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
   let totalLikes = document.createElement('div');
   totalLikes.classList.add('photograph-likes');
   totalLikes.textContent = totalLikesSum
   priceCard.append(totalLikes, heart, price);
   photographerGallery.appendChild(priceCard)
 
-  function computeTotalLikes() {
-    const priceCardHeart = document.querySelector(".heart")
-    if (priceCardHeart.hasAttribute("data-clicked")) {
-      console.log('true');
-      totalLikes.textContent = totalLikesSum + 1
-    } else if (priceCardHeart.hasAttribute("data-clicked") === undefined) {
-      console.log('false');
-      totalLikes.textContent = totalLikesSum - 1
+  // computeTotalLikes() function will watch for changes and every time when heart is clicked and like is added or removed, total number of likes will be updated
+  function computeTotalLikes(idMedia) {
+    const media = document.querySelector(`[data-idMedia = '${idMedia}']`)
+    const mediaHeart = media.querySelector('.heart')
+
+    if (mediaHeart.dataset.liked !== 'true') {
+      totalLikesSum = totalLikesSum - 1
+      totalLikes.textContent = totalLikesSum
+
+    }
+    else {
+      totalLikesSum = totalLikesSum + 1
+      totalLikes.textContent = totalLikesSum
     }
   }
 
+  // this forEach prototype prevents media of duplicating, if some media element exist, it will be replaced by 'currentNode', else we will have completly new element
   medias.forEach((media) => {
     let currentNode;
     if (listNodeMedia) {
@@ -82,19 +86,17 @@ async function displayData(photographer, medias, lightbox) {
     } else {
       let item = getGalleryElement({ ...media, path: MEDIA_BASE_PATH(photographer) }, lightbox)
       const element = item.toElement()
-
       item.addEventListener('like', function (event) {
-        console.log('like', event)
-        // update total likes
-        computeTotalLikes()
+        computeTotalLikes(media.id)
       })
-
       photographerGallery.appendChild(element)
     }
 
   })
 }
 
+//  displayFilters() function listen to the change event of the select to sort the data according to the selected order  
+//  call the function in "sortFunctions" which corresponds to the value of the filter 
 function displayFilters(photographers, medias) {
   const filtersElement = document.querySelector('#filter');
 
@@ -112,7 +114,7 @@ function displayFilters(photographers, medias) {
     }
   })
 }
-
+// displayContactModal() function will allow to open and see form
 function displayContactModal() {
   const modalElement = document.querySelector('#contact_modal')
 
@@ -120,7 +122,7 @@ function displayContactModal() {
   formListener();
 }
 
-
+// init() function initializes the data structures required by the rest of the computation of the aggregate. 
 async function init() {
   const url = new URL(window.location.href);
   const photographerId = url.searchParams.get("id");
@@ -128,12 +130,12 @@ async function init() {
   // Récupère les datas des photographes
   const photographer = await getPhotographerById(parseInt(photographerId));
   const medias = await getMediaByPhotographers(parseInt(photographerId));
-  console.log(medias, 'medias')
 
   const lightboxElement = document.querySelector('#lightbox')
   const lightbox = new LightBox(lightboxElement)
 
-  lightbox.setMediaResolver(function (type, { id: currentMediaId }) {  //function to change lightbox media 
+  //setMediaResolver function to change lightbox media when arrows are triggered
+  lightbox.setMediaResolver(function (type, { id: currentMediaId }) {
     switch (type) {
       case 'next': {
         let nextMediaId = medias.findIndex(({ id }) => id === currentMediaId) + 1
@@ -166,12 +168,14 @@ async function init() {
     }
   })
 
-
+  // Calling all functions
   displayHeader(photographer);
   displayData(photographer, medias, lightbox);
   displayFilters(photographer, medias);
   displayContactModal()
 }
 
+
+// DOMContentLoaded event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
 document.addEventListener('DOMContentLoaded', init)
 

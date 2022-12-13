@@ -1,6 +1,6 @@
-export default function contactModal () {
+export default function contactModal() {
     return (
-         `<div class="modal" role="dialog"
+        `<div class="modal" role="dialog"
         aria-modal="true">
                   <header role="contact">
             <h2 tabindex="0" class="modal-title" aria-labelledby="modalTitle">Contactez-moi</h2>
@@ -16,8 +16,8 @@ export default function contactModal () {
               <label tabindex="0" for="textarea">Votre message</label>
               <textarea tabindex="0" name="Votre message" id="textarea"  autocomplete="message" aria-required="true" placeholder="Votre message" required rows=10 style="width:100%;"></textarea>
                       </div>
-            <button id="contactButton" class="contact_button" role="button" aria-label="Envoyer message a photographer" >Envoyer</button>
-            <img tabindex="0" src="assets/icons/close.svg"  alt="Close" title="Close" class="closeButton"/>
+            <button id="contactButton" class="contact_button" role="button" aria-label="Envoyer message a photographer" title="Send">Envoyer</button>
+            <img tabindex="0" src="assets/icons/close.svg"  alt="Close" title="Close contact form" class="closeButton"/>
                   </form>
               </div>`
     )

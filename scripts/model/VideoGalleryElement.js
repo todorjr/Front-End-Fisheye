@@ -29,6 +29,7 @@ export class VideoGalleryElement extends BaseGalleryElement {
         mp4.classList.add("galleryPics")
         mp4.setAttribute("controls", "controls")
         mp4.setAttribute("alt", this.title)
+        mp4.setAttribute("title", this.title)
         mp4.setAttribute("src", videoData)
         mp4.setAttribute("tabindex", 0)
         mp4.setAttribute("type", "video/mp4")
@@ -79,6 +80,9 @@ export class VideoGalleryElement extends BaseGalleryElement {
                 like.textContent = ++this.likes
                 heart.classList.toggle('red');
 
+                this.dispatchEvent(new CustomEvent('like', { detail: { event, value: 1 } }))
+
+
             } else {
                 // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
                 // on supprime la valeur dans le dataset
@@ -86,6 +90,9 @@ export class VideoGalleryElement extends BaseGalleryElement {
                 like.textContent = --this.likes
                 heart.classList.remove('red');
                 heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+
+                this.dispatchEvent(new CustomEvent('like', { detail: { event, value: -1 } }))
+
             }
         },)
 

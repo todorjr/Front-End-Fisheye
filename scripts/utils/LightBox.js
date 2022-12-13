@@ -28,21 +28,20 @@ export class LightBox {
      */
     open(media) {
         let mediaElement
-
         const closeBtn = document.createElement('button')
         const prevBtn = document.createElement('a')
         const nextBtn = document.createElement('a')
 
         closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
         closeBtn.classList.add('close-lightbox')
-        closeBtn.setAttribute('title', 'Close lightbox');
+        closeBtn.setAttribute('title', 'Close dialog');
         closeBtn.addEventListener('click', e => {
             lightbox.classList.remove('active')
         })
 
         prevBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i>`
         prevBtn.classList.add('left-arrow')
-        prevBtn.setAttribute('title', 'Previous media');
+        prevBtn.setAttribute('title', 'Previous image');
         prevBtn.setAttribute("tabindex", 0)
         prevBtn.addEventListener('click', event => {
             event.preventDefault()
@@ -50,7 +49,7 @@ export class LightBox {
         })
 
         nextBtn.classList.add('right-arrow')
-        nextBtn.setAttribute('title', 'Next media');
+        nextBtn.setAttribute('title', 'Next image');
         nextBtn.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
         nextBtn.setAttribute("tabindex", 0)
 
