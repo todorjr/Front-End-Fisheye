@@ -1,29 +1,30 @@
 /**
- * Generate a image element.
+ * Generate a element with photographer informations.
  */
 
-import  Photographer  from "../model/Photographer.js";
+import Photographer from "../model/Photographer.js";
 
- export default class PhotographerProfile extends Photographer {
-    constructor(data){
+export default class PhotographerProfile extends Photographer {
+    constructor(data) {
         super(data)
-        this.portrait= data.portrait
+        this.portrait = data.portrait
     }
-    
-    toElement () {
-        const imgLink= document.createElement('a');
-        imgLink.setAttribute('href',`photographer.html?id=${this.id}`);
+
+    toElement() {
+        const imgLink = document.createElement('a');
+        imgLink.setAttribute('href', `photographer.html?id=${this.id}`);
         const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
         article.setAttribute("tabindex", "0");
         article.classList.add("photographer-article");
         const img = document.createElement("img");
         img.setAttribute("alt", this.name);
-        img.setAttribute("title","Profil picture");
+        img.setAttribute("title", "Profil picture");
         img.setAttribute("src", picture);
-        img.classList.add("profilPics");    
-        article.addEventListener("keypress", ()=>{
-          window.location.href=`photographer.html?id=${this.id}`});  
+        img.classList.add("profilPics");
+        article.addEventListener("keypress", () => {
+            window.location.href = `photographer.html?id=${this.id}`
+        });
         const h2 = document.createElement("h2");
         const euroSign = "\u20AC";
         const p = document.createElement("p");

@@ -68,9 +68,10 @@ h1:focus{
   height: 50px;
   margin-left: 100px;
 }
-.logo:focus{
+.link:focus{
   outline: 3px dashed;
   padding: 5px;
+  width: inherit;
 }
 .photographer_section {
   display: grid;
@@ -105,7 +106,7 @@ h1:focus{
 }
 
 .photographer_section article:focus{
-  outline: 3px dashed red;
+  outline: 2px dashed;
   padding: 5px;
 }
 

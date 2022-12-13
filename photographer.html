@@ -10,7 +10,8 @@
   </head>
   <body>
     <header role="banner">
-      <img src="assets/images/logo.png" class="logo" tabindex="0" />
+      <a class="link" href="./index.html">
+        <img src="assets/images/logo.png" class="logo" tabindex="0" />
       </a>
     </header>
     <main id="main" role="main">
@@ -19,7 +20,7 @@
           <button aria-label="Ouverture de la modal pour contacter le photographer" class="open-modal">Contactez-moi</button>
         </div>
       </div>
-          <!-- sort section -->
+    <!-- sort section -->
     <div class="dropdown">
       <label for="filter" class="dropdown-title">Trier par</label>
       <!-- capturer l'event change du select -->
@@ -29,13 +30,21 @@
       <option value="title">Titre</option>
       </select>
     </div>
-
     <!-- sort section -->
+
+    <!--media gallery-->
     <div class="photographer-gallery"></div>
+    <!--media gallery-->
+
+    <!--contact modal-->
     <div id="contact_modal" role="header">
 		</div>
+    <!--contact modal-->
+
+    <!--lightbox-->
     <div id="lightbox" class="lightbox" aria-label="image closeup view">
     </div>
+    <!--lightbox-->
     </main>
 
 

@@ -1,10 +1,7 @@
-// function will open modal
-
+// displayModal()f unction will open modal with focusable elements
 function displayModal() {
     const modal = document.getElementById("contact_modal");
-
     modal.style.display = "block";
-
     const firstFocusableElement = modal.querySelector(".modal-title"); // get first element to be focused inside modal
     const lastFocusableElement = modal.querySelector(".closeButton"); // get last element to be focused inside modal
 
@@ -37,24 +34,20 @@ function displayModal() {
     firstFocusableElement.focus();
 }
 
-// function will close modal
+// closeModal() function will close contact modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 
 }
 
-
-//form data from user
-
+// Input values/ form data from user
 export function formListener() {
     const openButton = document.querySelector('.open-modal');
     openButton.setAttribute('tabindex', 0)
     openButton.addEventListener('click', () => displayModal());
     const contactButton = document.querySelector('.closeButton');
     contactButton.addEventListener('click', () => closeModal());
-
-    //add close button select x button and add event listener also for send message do the same 
 
     const nom = document.getElementById('nom');
     const email = document.getElementById('email');
@@ -71,14 +64,12 @@ export function formListener() {
             "\nVotre email :\n", email.value,
             "\nVotre message :\n", textarea.value);
         const inputs = document.querySelectorAll('#nom, #email, #prenom, #textarea');
-
         inputs.forEach(input => {
             input.value = '';
         });
         closeModal();
 
     });
-
     contactButton.onkeydown = event => {
         if (event.key === 'Escape' || event.key === 'Enter') {
             event.preventDefault()
