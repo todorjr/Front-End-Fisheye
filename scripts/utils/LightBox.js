@@ -32,8 +32,6 @@ export class LightBox {
         const closeBtn = document.createElement('button')
         const prevBtn = document.createElement('a')
         const nextBtn = document.createElement('a')
-        const mediaTitle = document.createElement('p')
-        mediaTitle.innerHTML = 'Title'
 
         closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
         closeBtn.classList.add('close-lightbox')
@@ -93,8 +91,34 @@ export class LightBox {
         }
 
         if (mediaElement) {
-            this.element.replaceChildren(closeBtn, prevBtn, mediaElement, mediaTitle, nextBtn)
+
+            this.element.replaceChildren(closeBtn, prevBtn, mediaElement, nextBtn)
             this.element.classList.add('active')
+            const lightbox = document.getElementById("lightbox");
+
+            const firstFocusableElement = lightbox.querySelector(".left-arrow"); // get first element to be focused inside modal
+            const lastFocusableElement = lightbox.querySelector(".close-lightbox"); // get last element to be focused inside modal
+
+            document.addEventListener('keydown', function (e) {
+                let isTabPressed = e.key === 'Tab';
+
+                if (!isTabPressed) {
+                    return;
+                }
+                if (e.shiftKey) { // if shift key pressed for shift + tab combination
+                    if (document.activeElement === firstFocusableElement) {
+                        e.preventDefault();
+                        lastFocusableElement.focus(); // add focus for the last focusable element
+                    }
+                } else { // if tab key is pressed
+                    if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+                        e.preventDefault();
+                        firstFocusableElement.focus(); // add focus for the first focusable element
+                    }
+                }
+            });
+
+            lastFocusableElement.focus();
         }
     }
 
@@ -116,3 +140,4 @@ export class LightBox {
         this.open(prevMedia)
     }
 }
+
