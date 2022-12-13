@@ -1,4 +1,5 @@
 // function will open modal
+
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 
@@ -86,6 +87,5 @@ export function formListener() {
     }
 }
 
-// accessibility closing modal when key enter is pressed
 
 

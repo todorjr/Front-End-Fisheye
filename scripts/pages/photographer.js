@@ -56,6 +56,16 @@ async function displayData(photographer, medias, lightbox) {
   priceCard.append(totalLikes, heart, price);
   photographerGallery.appendChild(priceCard)
 
+  function computeTotalLikes() {
+    const priceCardHeart = document.querySelector(".heart")
+    if (priceCardHeart.hasAttribute("data-clicked")) {
+      console.log('true');
+      totalLikes.textContent = totalLikesSum + 1
+    } else if (priceCardHeart.hasAttribute("data-clicked") === undefined) {
+      console.log('false');
+      totalLikes.textContent = totalLikesSum - 1
+    }
+  }
 
   medias.forEach((media) => {
     let currentNode;
@@ -110,14 +120,6 @@ function displayContactModal() {
   formListener();
 }
 
-function computeTotalLikes() {
-  const priceCardHeart = document.querySelector(".heart")
-  if (priceCardHeart.hasAttribute("data-clicked")) {
-    totalLikesSum = totalLikesSum + 1
-  } else if (priceCardHeart.hasAttribute("data-clicked") === undefined) {
-    totalLikesSum = totalLikesSum - 1
-  }
-}
 
 async function init() {
   const url = new URL(window.location.href);
@@ -169,9 +171,7 @@ async function init() {
   displayData(photographer, medias, lightbox);
   displayFilters(photographer, medias);
   displayContactModal()
-
 }
-
 
 document.addEventListener('DOMContentLoaded', init)
 
