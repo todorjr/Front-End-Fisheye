@@ -1,5 +1,5 @@
 import { getPhotographerById, getMediaByPhotographers } from "../api/index.js";
-import FactoryMedia from "../factories/FactoryMedia.js";
+import { getGalleryElement } from "../factories/FactoryMedia.js";
 import HeaderFactory from "../factories/HeaderFactory.js";
 import contactModal from "../utils/contactModal.js";
 import { formListener } from "../utils/contactForm.js";
@@ -37,6 +37,25 @@ async function displayHeader(photographer) {
 async function displayData(photographer, medias, lightbox) {
   const photographerGallery = document.querySelector(".photographer-gallery");
   const listNodeMedia = document.querySelectorAll(".media-gallery-div");
+  const sum = 0;
+  let totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
+  const heart = document.createElement("span")
+  heart.setAttribute("tabindex", 0)
+  heart.classList.add("heartPrice")
+  heart.setAttribute("id", "heart");
+  heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
+  const priceCard = document.createElement('div');
+  priceCard.classList.add('price-block');
+  const price = document.createElement('div');
+  price.classList.add('photograph-price');
+  price.textContent = photographer.price + '€/Jour';
+  let totalLikes = document.createElement('div');
+  totalLikes.classList.add('photograph-likes');
+  totalLikes.textContent = totalLikesSum
+  priceCard.append(totalLikes, heart, price);
+  photographerGallery.appendChild(priceCard)
+
 
   medias.forEach((media) => {
     let currentNode;
@@ -51,8 +70,15 @@ async function displayData(photographer, medias, lightbox) {
     if (currentNode) {
       photographerGallery.appendChild(currentNode)
     } else {
-      let item = new FactoryMedia({ ...media, path: MEDIA_BASE_PATH(photographer) }, lightbox)
+      let item = getGalleryElement({ ...media, path: MEDIA_BASE_PATH(photographer) }, lightbox)
       const element = item.toElement()
+
+      item.addEventListener('like', function (event) {
+        console.log('like', event)
+        // update total likes
+        computeTotalLikes()
+      })
+
       photographerGallery.appendChild(element)
     }
 
@@ -82,6 +108,15 @@ function displayContactModal() {
 
   modalElement.innerHTML = contactModal();
   formListener();
+}
+
+function computeTotalLikes() {
+  const priceCardHeart = document.querySelector(".heart")
+  if (priceCardHeart.hasAttribute("data-clicked")) {
+    totalLikesSum = totalLikesSum + 1
+  } else if (priceCardHeart.hasAttribute("data-clicked") === undefined) {
+    totalLikesSum = totalLikesSum - 1
+  }
 }
 
 async function init() {
@@ -135,32 +170,8 @@ async function init() {
   displayFilters(photographer, medias);
   displayContactModal()
 
-  const sum = 0;
-  let totalLikesSum = medias.reduce((acc, { likes }) => acc + likes, sum)
-  const heart = document.createElement("span")
-  heart.setAttribute("tabindex", 0)
-  heart.classList.add("heartPrice")
-  heart.setAttribute("id", "heart");
-  heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
-
-  const priceCardHeart = document.querySelector(".heart")
-  console.log(priceCardHeart.hasAttribute("data-liked"), 'price');
-
-
-  const photographerGallery = document.querySelector(".photographer-gallery");
-  const priceCard = document.createElement('div');
-  priceCard.classList.add('price-block');
-  const price = document.createElement('div');
-  price.classList.add('photograph-price');
-  price.textContent = photographer.price + '€/Jour';
-  let totalLikes = document.createElement('div');
-  totalLikes.classList.add('photograph-likes');
-  totalLikes.textContent = totalLikesSum
-  priceCard.append(totalLikes, heart, price);
-  photographerGallery.appendChild(priceCard)
-
-
 }
+
 
 document.addEventListener('DOMContentLoaded', init)
 

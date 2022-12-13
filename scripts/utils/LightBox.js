@@ -32,6 +32,8 @@ export class LightBox {
         const closeBtn = document.createElement('button')
         const prevBtn = document.createElement('a')
         const nextBtn = document.createElement('a')
+        const mediaTitle = document.createElement('p')
+        mediaTitle.innerHTML = 'Title'
 
         closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
         closeBtn.classList.add('close-lightbox')
@@ -44,25 +46,39 @@ export class LightBox {
         prevBtn.classList.add('left-arrow')
         prevBtn.setAttribute('title', 'Previous media');
         prevBtn.setAttribute("tabindex", 0)
-
-
         prevBtn.addEventListener('click', event => {
             event.preventDefault()
             this.displayPrev(media)
         })
-
 
         nextBtn.classList.add('right-arrow')
         nextBtn.setAttribute('title', 'Next media');
         nextBtn.innerHTML = `<i class="fa-solid fa-arrow-right"></i>`
         nextBtn.setAttribute("tabindex", 0)
 
-
-
         nextBtn.addEventListener('click', event => {
             event.preventDefault()
             this.displayNext(media)
         })
+
+        closeBtn.onkeydown = event => {
+            if (event.key === 'Escape' || event.key === 'Enter') {
+                event.preventDefault()
+                lightbox.classList.remove('active')
+            }
+        }
+        nextBtn.onkeydown = event => {
+            if (event.key === 'ArrowRight' || event.key === 'Enter') {
+                event.preventDefault()
+                this.displayNext(media)
+            }
+        }
+        prevBtn.onkeydown = event => {
+            if (event.key === 'ArrowLeft' || event.key === 'Enter') {
+                event.preventDefault()
+                this.displayPrev(media)
+            }
+        }
 
         if (media.type === 'image') {
             mediaElement = document.createElement('img')
@@ -77,7 +93,7 @@ export class LightBox {
         }
 
         if (mediaElement) {
-            this.element.replaceChildren(closeBtn, prevBtn, mediaElement, nextBtn)
+            this.element.replaceChildren(closeBtn, prevBtn, mediaElement, mediaTitle, nextBtn)
             this.element.classList.add('active')
         }
     }
@@ -98,18 +114,5 @@ export class LightBox {
         const prevMedia = this.mediaResolver('prev', currentMedia)
 
         this.open(prevMedia)
-    }
-}
-
-
-document.onkeydown = function (e) {
-    let evt = e || window.event; // for more compatibility
-    let keyCode = evt.keyCode;
-
-    switch (keyCode) {
-        case 27:
-            lightbox.classList.remove('active')
-            e.preventDefault(); // prevents the default behaviour to trigger
-            break;
     }
 }
