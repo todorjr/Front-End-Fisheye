@@ -40,6 +40,17 @@ export class ImageGalleryElement extends BaseGalleryElement {
                 })
             })
 
+            img.onkeydown = event => {
+                if (event.key === 'Enter') {
+                    event.preventDefault()
+                    this.lightbox.open({
+                        id: this.id,
+                        url: picture,
+                        type: 'image',
+                    })
+                }
+            }
+
             const titleText = document.createElement("h4")
             titleText.classList.add("imageTitle")
             titleText.innerText = this.title
@@ -53,7 +64,7 @@ export class ImageGalleryElement extends BaseGalleryElement {
             like.classList.add("imageLike");
             like.textContent = this.likes
 
-            heart.addEventListener("click", () => {
+            heart.addEventListener("click", event => {
 
                 if (heart.dataset.liked !== 'true') {
                     // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
@@ -63,6 +74,8 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     heart.classList.toggle('red');
                     heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
 
+                    this.dispatchEvent(new CustomEvent('like', { detail: { event, value: 1 } }))
+
                 } else {
                     // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
                     // on supprime la valeur dans le dataset
@@ -70,8 +83,37 @@ export class ImageGalleryElement extends BaseGalleryElement {
                     like.textContent = --this.likes
                     heart.classList.remove('red');
                     heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+
+                    this.dispatchEvent(new CustomEvent('like', { detail: { event, value: -1 } }))
                 }
             },)
+
+            heart.onkeydown = event => {
+                if (event.key === 'Enter') {
+                    if (heart.dataset.liked !== 'true') {
+                        // l'utilisateur n'a pas liké le post, on sauvegarde son like dans le dataset de l'élément et on incrémente le total des likes
+                        // la valeur est égale à true
+                        heart.dataset.liked = 'true';
+                        like.textContent = ++this.likes
+                        heart.classList.toggle('red');
+                        heart.innerHTML = `<i class="fa-solid fa-heart"></i>`
+
+                        this.dispatchEvent(new CustomEvent('like', { detail: { event, value: 1 } }))
+
+                    } else {
+                        // l'utilisateur avait déjà liké le post, on supprime alors son like du dataset de l'élément et on décrémente le total des likes
+                        // on supprime la valeur dans le dataset
+                        heart.dataset.liked = undefined;
+                        like.textContent = --this.likes
+                        heart.classList.remove('red');
+                        heart.innerHTML = `<i class="fa fa-heart-o"></i>`
+
+                        this.dispatchEvent(new CustomEvent('like', { detail: { event, value: -1 } }))
+                    }
+                }
+            }
+
+
             textDiv.appendChild(titleText)
             textDiv.appendChild(like)
             textDiv.appendChild(heart)

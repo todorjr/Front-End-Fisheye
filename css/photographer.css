@@ -28,6 +28,10 @@
     align-items: center;
     padding: 10px;
 }
+.photograph-header:focus {
+    border: dashed 1px ;
+    padding-bottom: 5px;
+}
 .photographer-header__article {
     display: flex;
     flex-flow: row wrap;

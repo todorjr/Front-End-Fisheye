@@ -1,9 +1,10 @@
 /**
  * Class to share common methods between media type.
  */
-export class BaseGalleryElement {
-    
+export class BaseGalleryElement extends EventTarget {
+
     constructor(media) {
+        super()
         this.title = media.title;
         this.date = media.date;
         this.likes = media.likes;
@@ -12,7 +13,7 @@ export class BaseGalleryElement {
         this.photgrapherId = media.photgrapherId;
         this.path = media.path;
     }
-    toElement () {
+    toElement() {
         throw new Error('UNKNOWN TYPE')
     }
 }
