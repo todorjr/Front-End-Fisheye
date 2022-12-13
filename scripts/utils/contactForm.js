@@ -26,6 +26,13 @@ function displayModal() {
         }
     });
 
+    modal.onkeydown = event => {
+        if (event.key === 'Escape') {
+            event.preventDefault()
+            closeModal()
+        }
+    }
+
     firstFocusableElement.focus();
 }
 
@@ -41,6 +48,7 @@ function closeModal() {
 
 export function formListener() {
     const openButton = document.querySelector('.open-modal');
+    openButton.setAttribute('tabindex', 0)
     openButton.addEventListener('click', () => displayModal());
     const contactButton = document.querySelector('.closeButton');
     contactButton.addEventListener('click', () => closeModal());
@@ -69,17 +77,15 @@ export function formListener() {
         closeModal();
 
     });
+
+    contactButton.onkeydown = event => {
+        if (event.key === 'Escape' || event.key === 'Enter') {
+            event.preventDefault()
+            closeModal()
+        }
+    }
 }
 
 // accessibility closing modal when key enter is pressed
-document.onkeydown = function (e) {
-    let evt = e || window.event; // for more compatibility
-    let keyCode = evt;
 
-    switch (keyCode) {
-        case '27':
-            closeModal();
-            e.preventDefault(); // prevents the default behaviour to trigger
-            break;
-    }
-}
+
