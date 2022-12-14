@@ -13,7 +13,6 @@ export default class PhotographerHeader extends Photographer {
     toElement() {
         const picture = `assets/photographers/${this.portrait}`;
         const article = document.createElement("article");
-        article.setAttribute("tabindex", "0");
         article.classList.add("photographer-header__article");
         const img = document.createElement("img");
         img.setAttribute("alt", this.name);
