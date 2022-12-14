@@ -316,8 +316,3 @@ border-radius: 5px;
 color: #FAFAFA;
 font-size: 20px;
 }
-#dropdown *
-{
- border-radius: 15px;
- background-color: red;
-}
