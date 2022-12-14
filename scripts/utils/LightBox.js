@@ -83,11 +83,14 @@ export class LightBox {
             mediaElement = document.createElement('img')
             mediaElement.src = media.url
             mediaElement.setAttribute("tabindex", 0)
+            mediaElement.setAttribute("title", 'Lightbox image')
 
         } else if (media.type === 'video') {
             mediaElement = document.createElement('video')
             mediaElement.setAttribute("controls", "controls")
             mediaElement.setAttribute("tabindex", 0)
+            mediaElement.setAttribute("title", 'Lightbox video')
+
             mediaElement.src = media.url
         }
 
