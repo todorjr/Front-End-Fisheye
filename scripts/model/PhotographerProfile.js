@@ -41,7 +41,7 @@ export default class PhotographerProfile extends Photographer {
         imgLink.appendChild(img)
         article.appendChild(imgLink);
         div.appendChild(imgLink)
-        article.appendChild(h2);
+        div.appendChild(h2);
         article.appendChild(div);
         div.appendChild(p);
         div.appendChild(textContent);
