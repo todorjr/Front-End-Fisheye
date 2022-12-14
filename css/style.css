@@ -16,6 +16,11 @@ label{
   padding-bottom: 5px;
 }
 
+*[tabindex]:focus {
+  outline: 2px blue dashed;
+  padding: 5px;
+}
+
 h2 {
   margin: 10px 0 10px 0;
   font-style: normal;
@@ -24,10 +29,10 @@ h2 {
   line-height: 83px;
   color: #D3573C;
 }
-h2:focus,label:focus,input:focus{
+/* h2:focus,label:focus,input:focus{
   outline: 3px dashed;
   padding: 5px;
-}
+} */
 h3 {
   font-style: normal;
   font-weight: 200;
@@ -60,19 +65,19 @@ h1 {
   color: #901c1c;
   margin-right: 100px;
 }
-h1:focus{
+/* h1:focus{
   outline: 3px dashed;
-  padding: 5px;}
+  padding: 5px;} */
 
 .logo {
   height: 50px;
   margin-left: 100px;
 }
-.link:focus{
+/* .link:focus{
   outline: 3px dashed;
   padding: 5px;
   width: inherit;
-}
+} */
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -105,8 +110,8 @@ h1:focus{
   margin: 5px;
 }
 
-.photographer_section article:focus{
+/* .photographer_section article:focus{
   outline: 2px dashed;
   padding: 5px;
-}
+} */
 

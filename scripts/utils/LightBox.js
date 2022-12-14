@@ -34,6 +34,8 @@ export class LightBox {
 
         closeBtn.innerHTML = `<i class="fa-solid fa-x"></i>`
         closeBtn.classList.add('close-lightbox')
+        closeBtn.setAttribute('tabindex', 0);
+
         closeBtn.setAttribute('title', 'Close dialog');
         closeBtn.addEventListener('click', e => {
             lightbox.classList.remove('active')
