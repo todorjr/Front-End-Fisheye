@@ -304,8 +304,9 @@ margin: 20px 100px ;
 }
 .dropdown-title{
 font-weight:700;
-font-size:18.5px;
+font-size:24px;
 line-height:23.44px;
+margin-right: 10px;
 }
 .dropdown-close {
 width: 170px;
@@ -313,4 +314,10 @@ height: 69px;
 background: #911C1C;
 border-radius: 5px;
 color: #FAFAFA;
+font-size: 20px;
+}
+#dropdown *
+{
+ border-radius: 15px;
+ background-color: red;
 }
